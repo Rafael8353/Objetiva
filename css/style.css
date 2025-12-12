@@ -1,24 +1,17 @@
-/* 1. VARIÁVEIS E CONFIGURAÇÕES GERAIS
-    Definição de cores, fontes e comportamentos globais.
-*/
+/* 1. CONFIGURAÇÕES GERAIS */
 :root {
-    /* Paleta de Cores da Marca */
     --primary: #008f4c;
     --primary-gradient: linear-gradient(135deg, #9cc837 0%, #008f4c 100%);
     --primary-dark: #00753e;
     --secondary: #e6f4ea; 
-    
-    /* Cores Neutras e Texto */
     --text: #212529;
     --light: #f8f9fa;
     --white: #ffffff;
-    
-    /* UI Elements */
     --shadow: 0 10px 30px rgba(0,0,0,0.08);
 }
 
 html { 
-    scroll-behavior: smooth; /* Rolagem suave ao clicar em links âncora */
+    scroll-behavior: smooth; 
 }
 
 body { 
@@ -27,7 +20,7 @@ body {
     padding: 0; 
     color: var(--text); 
     background-color: var(--white);
-    padding-top: 70px; /* Espaço para o header fixo não cobrir o conteúdo */
+    padding-top: 70px; 
 }
 
 .container { 
@@ -41,13 +34,11 @@ a {
     transition: all 0.3s ease; 
 }
 
-/* 2. HEADER (CABEÇALHO)
-    Menu fixo com efeito de desfoque (blur).
-*/
+/* 2. CABEÇALHO */
 .main-header {
     background: rgba(255, 255, 255, 0.9);
-    backdrop-filter: blur(10px); /* Efeito de vidro fosco */
-    -webkit-backdrop-filter: blur(10px); /* Suporte para Safari */
+    backdrop-filter: blur(10px); 
+    -webkit-backdrop-filter: blur(10px); 
     box-shadow: 0 4px 20px rgba(0,0,0,0.05);
     position: fixed; 
     top: 0; 
@@ -64,33 +55,38 @@ a {
     height: 70px; 
 }
 
-/* Container do Logo (Link) */
+/* Logo - Ajustes de Alinhamento */
 .logo-link {
     display: flex;
     align-items: center;
-    gap: 10px; /* Espaço entre a imagem e o texto */
+    /* Reduzi o espaço para ficar mais perto */
+    gap: 6px; 
     text-decoration: none;
 }
 
-/* Imagem do Logo */
 .logo-img {
-    height: 45px; /* Ajuste conforme necessário para caber no header */
+    height: 48px; 
     width: auto;
+    display: block;
 }
 
 .logo { 
     font-size: 1.1rem; 
     font-weight: 800; 
-    /* Texto com gradiente */
     background: var(--primary-gradient);
     background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     text-transform: uppercase; 
     letter-spacing: 0.5px; 
+    
+    /* Correção Visual: Empurra o texto para baixo para alinhar com o corpo do mouse */
+    position: relative;
+    top: 5px; 
+    line-height: 1; 
 }
 
-/* Menu Desktop */
+/* Menu */
 .desktop-menu ul {
     display: flex;
     gap: 15px; 
@@ -106,7 +102,6 @@ a {
     padding: 5px 0;
 }
 
-/* Efeito de sublinhado animado ao passar o mouse */
 .desktop-menu a::after {
     content: '';
     position: absolute;
@@ -118,15 +113,9 @@ a {
     transition: width 0.3s ease;
 }
 
-.desktop-menu a:hover { 
-    color: var(--primary); 
-}
+.desktop-menu a:hover { color: var(--primary); }
+.desktop-menu a:hover::after { width: 100%; }
 
-.desktop-menu a:hover::after {
-    width: 100%; 
-}
-
-/* Botão de Destaque (Portal do Aluno) */
 .btn-destaque { 
     background: var(--primary-gradient); 
     color: var(--white) !important; 
@@ -144,9 +133,7 @@ a {
     min-width: 130px;    
     height: auto;
 }
-
-.btn-destaque::after { display: none; /* Remove o sublinhado padrão dos links do menu */ }
-
+.btn-destaque::after { display: none; }
 .btn-destaque:hover { 
     filter: brightness(0.95);
     transform: translateY(-2px);
@@ -154,7 +141,7 @@ a {
 }
 
 .menu-icon { 
-    display: none; /* Invisível no desktop */
+    display: none; 
     background: none; 
     border: none; 
     font-size: 1.8rem; 
@@ -162,11 +149,9 @@ a {
     color: var(--primary); 
 }
 
-/* 3. HERO SECTION (BANNER PRINCIPAL)
-   AJUSTES REALIZADOS: Altura reduzida e elementos menores
-*/
+/* 3. HERO (BANNER) */
 .hero {
-    min-height: 60vh; /* Reduzido de 90vh para 60vh para ocupar menos espaço */
+    min-height: 60vh; 
     height: auto;
     background: url('../img/banner.jpg') no-repeat center center/cover;
     position: relative;
@@ -174,12 +159,11 @@ a {
     align-items: center; 
     justify-content: center; 
     color: var(--white);
-    background-color: #000; /* Fallback se a imagem falhar */
-    padding-top: 100px; /* Reduzido o espaçamento superior */
-    padding-bottom: 50px; /* Reduzido o espaçamento inferior */
+    background-color: #000; 
+    padding-top: 100px; 
+    padding-bottom: 50px;
 }
 
-/* Camada escura/verde sobre a imagem de fundo para melhorar leitura */
 .overlay {
     position: absolute; 
     top: 0; 
@@ -191,7 +175,7 @@ a {
 
 .hero-container {
     position: relative;
-    z-index: 2; /* Garante que o conteúdo fique acima do overlay */
+    z-index: 2; 
     width: 100%;
 }
 
@@ -199,7 +183,7 @@ a {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: 30px; /* Gap reduzido */
+    gap: 30px;
     text-align: left;
 }
 
@@ -209,16 +193,14 @@ a {
 }
 
 .hero h1 { 
-    font-size: 2.5rem; /* Fonte do título reduzida (era 3.5rem) */
+    font-size: 2.5rem; 
     margin-bottom: 15px; 
     font-weight: 800;
     line-height: 1.1;
     text-shadow: 0 2px 10px rgba(0,0,0,0.1);
 }
 
-.hero p {
-    font-size: 1rem; /* Tamanho de texto ajustado */
-}
+.hero p { font-size: 1rem; }
 
 .hero-image {
     flex: 1;
@@ -227,14 +209,13 @@ a {
 }
 
 .hero-banner-img {
-    max-width: 85%; /* Imagem limitada a 85% para não ficar enorme */
+    max-width: 85%; 
     height: auto;
-    mix-blend-mode: multiply; /* Faz a imagem se misturar melhor com o fundo verde */
+    mix-blend-mode: multiply; 
     filter: drop-shadow(0 10px 20px rgba(0,0,0,0.1));
 }
 
-/* 4. BOTÕES GERAIS E UTILITÁRIOS
-*/
+/* 4. BOTÕES E UTILITÁRIOS */
 .btn-primary { 
     background: var(--primary-gradient); 
     color: var(--white); 
@@ -247,7 +228,6 @@ a {
     box-shadow: 0 4px 15px rgba(0,0,0,0.1);
     cursor: pointer;
 }
-
 .btn-primary:hover { 
     filter: brightness(0.95);
     color: var(--white); 
@@ -264,14 +244,12 @@ a {
     display: inline-block;
     transition: all 0.3s ease;
 }
-
 .btn-outline:hover { 
     background: var(--white); 
     color: var(--primary); 
 }
 
-/* Espaçamento e Fundos de Seção */
-.section-padding { padding: 80px 0; /* Padding geral reduzido de 100px para 80px */ }
+.section-padding { padding: 80px 0; }
 
 .section-bg { 
     background-color: var(--secondary);
@@ -281,14 +259,12 @@ a {
 
 .section-title { 
     text-align: center; 
-    font-size: 2.2rem; /* Títulos de seção levemente reduzidos */
+    font-size: 2.2rem; 
     margin-bottom: 50px; 
     color: var(--primary); 
     position: relative;
     font-weight: 800;
 }
-
-/* Detalhe visual abaixo do título */
 .section-title::after {
     content: ''; 
     display: block; 
@@ -299,40 +275,60 @@ a {
     border-radius: 10px;
 }
 
-/* 5. CARROSSEL DE CURSOS
-*/
-.carousel-wrapper {
-    position: relative;
-    display: flex;
-    align-items: center;
-    gap: 20px;
+/* 5. CARROSSEL (SPLIDE) */
+.splide { padding: 0 60px; }
+
+.splide__arrow {
+    background: var(--primary-gradient);
+    opacity: 1; 
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2); 
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    width: 3.5rem;  
+    height: 3.5rem; 
+    border-radius: 50%;
 }
 
-.carousel-track {
-    display: flex;
-    gap: 30px;
-    overflow-x: auto;
-    scroll-behavior: smooth;
-    padding: 30px 10px;
-    width: 100%;
-    min-width: 0;
-    scrollbar-width: none; /* Firefox: Oculta barra de rolagem */
-    -ms-overflow-style: none; /* IE/Edge */
+/* Tema Uniritter (Vermelho) */
+.splide-uniritter .splide__arrow {
+    background: linear-gradient(135deg, #ff4b4b 0%, #b30000 100%);
 }
-.carousel-track::-webkit-scrollbar { display: none; /* Chrome/Safari */ }
+.splide-uniritter .splide__arrow:hover {
+    box-shadow: 0 6px 20px rgba(179, 0, 0, 0.4);
+}
+#uniritter .section-title { color: #b30000; }
+#uniritter .section-title::after {
+    background: linear-gradient(135deg, #ff4b4b 0%, #b30000 100%);
+}
+#uniritter .btn-link { color: #b30000; }
+#uniritter .btn-link:hover { color: #800000; text-decoration: underline; }
 
+.splide__arrow--prev { left: 10px; }
+.splide__arrow--next { right: 10px; }
+
+.splide__arrow:hover {
+    transform: scale(1.1) translateY(-50%); 
+    filter: brightness(1.1);
+    box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+}
+
+.splide__arrow svg {
+    fill: white; 
+    width: 20px;  
+    height: 20px; 
+}
+
+/* Card Curso */
 .card-curso {
-    min-width: 320px;
-    max-width: 320px;
     background: var(--white);
     border-radius: 20px;
     overflow: hidden;
     box-shadow: var(--shadow);
     border: 1px solid rgba(0,0,0,0.05);
     transition: transform 0.3s, box-shadow 0.3s;
-    height: auto;
+    height: 100%; 
+    display: flex;
+    flex-direction: column;
 }
-
 .card-curso:hover { 
     transform: translateY(-10px); 
     box-shadow: 0 15px 35px rgba(0,0,0,0.12);
@@ -346,7 +342,6 @@ a {
     display: block;
     border-bottom: 1px solid #f0f0f0;
 }
-
 .card-img-top img {
     width: 100%;
     height: auto;
@@ -354,19 +349,23 @@ a {
     object-fit: contain;
 }
 
-.card-body { padding: 30px; }
-
+.card-body { 
+    padding: 30px;
+    flex-grow: 1; 
+    display: flex;
+    flex-direction: column;
+}
 .card-body h3 { 
     margin-top: 0; 
     color: var(--text); 
     font-size: 1.4rem;
     margin-bottom: 10px;
 }
-
 .card-body p {
     color: #666;
     font-size: 0.95rem;
     line-height: 1.6;
+    margin-bottom: auto; 
 }
 
 .btn-link { 
@@ -378,43 +377,16 @@ a {
     font-size: 0.8rem; 
     letter-spacing: 1px;
 }
-.btn-link:hover { 
-    color: var(--primary-dark); 
-    text-decoration: underline; 
-}
+.btn-link:hover { color: var(--primary-dark); text-decoration: underline; }
 
-.carousel-btn {
-    background: var(--primary-gradient);
-    color: white;
-    border: none;
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    cursor: pointer;
-    font-weight: bold;
-    font-size: 1.2rem;
-    transition: all 0.3s ease;
-    z-index: 10;
-    flex-shrink: 0;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-}
-.carousel-btn:hover { 
-    filter: brightness(0.95);
-    transform: scale(1.1); 
-}
-
-/* 6. FORMULÁRIOS E CONTATO
-*/
+/* 6. FORMULÁRIOS */
 .contato-grid { 
     display: grid; 
     grid-template-columns: 1fr 1fr; 
     gap: 40px; 
     align-items: stretch; 
 }
-
-/* Ajustes específicos de grid por seção */
 #contato .contato-grid { grid-template-columns: 1fr 1fr; }
-#bolsas .contato-grid { grid-template-columns: 1fr 1.2fr; }
 
 .form-contato {
     background: var(--white);
@@ -429,7 +401,7 @@ a {
 }
 
 .form-contato input, 
-.form-contato textarea,
+.form-contato textarea, 
 .form-contato select {
     width: 100%; 
     padding: 18px; 
@@ -442,10 +414,7 @@ a {
     font-size: 1rem;
     background-color: #fcfcfc;
 }
-
-.form-contato input:focus, 
-.form-contato textarea:focus,
-.form-contato select:focus {
+.form-contato input:focus, .form-contato textarea:focus {
     outline: none; 
     border-color: var(--primary); 
     background-color: #fff;
@@ -466,7 +435,6 @@ a {
     text-transform: uppercase;
     letter-spacing: 1px;
 }
-
 .form-contato button:hover { 
     filter: brightness(0.95);
     transform: translateY(-3px);
@@ -479,19 +447,15 @@ a {
     transition: 0.3s;
     font-size: 1.2rem;
 }
-.email-link:hover, .tel-link:hover {
-    color: var(--primary);
-}
+.email-link:hover, .tel-link:hover { color: var(--primary); }
 .tel-link { text-decoration: none; }
 
-/* 7. MAPAS E LOJA VIRTUAL
-*/
+/* 7. MAPAS E LOJA */
 .mapas-grid {
     display: grid;
     grid-template-columns: 1fr 1fr; 
     gap: 40px; 
 }
-
 .mapa-item {
     background: var(--white);
     padding: 30px;
@@ -506,7 +470,6 @@ a {
     justify-content: center;
     align-items: center;
 }
-
 .mapa-item:hover { transform: translateY(-5px); }
 
 .mapa-item h3 {
@@ -541,7 +504,7 @@ a {
 .link-loja {
     display: block;
     position: relative;
-    max-width: 450px; 
+    max-width: 300px; 
     margin: 0 auto; 
     overflow: hidden;
     border-radius: 20px;
@@ -572,10 +535,7 @@ a {
     transition: color 0.3s ease;
     border-top: 1px solid #eee;
 }
-
-.link-loja:hover .btn-loja {
-    color: var(--primary-dark);
-}
+.link-loja:hover .btn-loja { color: var(--primary-dark); }
 
 .social-icons {
     display: flex;
@@ -583,7 +543,6 @@ a {
     gap: 30px;
     margin-top: 20px;
 }
-
 .social-icons img {
     width: 50px; 
     height: 50px; 
@@ -591,13 +550,9 @@ a {
     transition: transform 0.3s;
     filter: drop-shadow(0 5px 10px rgba(0,0,0,0.1));
 }
+.social-icons img:hover { transform: scale(1.2) rotate(5deg); }
 
-.social-icons img:hover {
-    transform: scale(1.2) rotate(5deg); 
-}
-
-/* 8. RODAPÉ
-*/
+/* 8. RODAPÉ */
 footer { 
     background: linear-gradient(135deg, #006030 0%, #004d26 100%);
     color: var(--white); 
@@ -607,8 +562,7 @@ footer {
     opacity: 0.95;
 }
 
-/* 9. WIDGET FLUTUANTE DO WHATSAPP
-*/
+/* 9. WIDGET WHATSAPP */
 .whatsapp-container {
     position: fixed;
     bottom: 30px;
@@ -628,7 +582,7 @@ footer {
     display: flex;
     align-items: center;
     justify-content: center;
-    animation: pulse 3s infinite; /* Efeito de pulsar */
+    animation: pulse 3s infinite; 
     transition: all 0.3s ease;
 }
 .whatsapp-float:hover {
@@ -638,7 +592,6 @@ footer {
 
 .whatsapp-img { width: 38px; height: auto; display: block; }
 
-/* Menu de opções (aparece ao clicar) */
 .whatsapp-options {
     position: absolute;
     bottom: 80px;
@@ -651,7 +604,6 @@ footer {
     transform: translateY(20px);
     transition: all 0.3s ease;
 }
-
 .whatsapp-options.open {
     opacity: 1;
     visibility: visible;
@@ -686,12 +638,10 @@ footer {
     100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
 }
 
-/* 10. RESPONSIVIDADE (MOBILE E TABLETS)
-*/
+/* 10. RESPONSIVIDADE */
 @media (max-width: 768px) {
     .menu-icon { display: block; }
     
-    /* O menu desktop se torna um menu dropdown */
     .desktop-menu ul {
         display: none; 
         flex-direction: column;
@@ -704,34 +654,28 @@ footer {
         box-shadow: 0 10px 30px rgba(0,0,0,0.1);
         border-top: 1px solid #eee;
     }
-    
     .desktop-menu ul.active { display: flex; }
 
-    /* Ajuste do Banner */
     .hero-content {
         flex-direction: column;
         text-align: center;
         gap: 40px;
     }
-
-    .hero h1 { font-size: 2rem; /* Reduzido no mobile também */ }
-    
+    .hero h1 { font-size: 2rem; }
     .hero-banner-img {
         margin: 0 auto; 
-        max-height: 250px; /* Reduzido a altura máxima no mobile */
+        max-height: 250px; 
     }
 
+    .splide { padding: 0; }
+    .splide__arrow { width: 2.5rem; height: 2.5rem; }
+    .splide__arrow--prev { left: 5px; }
+    .splide__arrow--next { right: 5px; }
+
     .btn-outline { margin: 10px 5px; }
-    
-    /* Layouts de Grid viram Coluna única */
     .contato-grid { grid-template-columns: 1fr; gap: 40px; }
     .mapas-grid { grid-template-columns: 1fr; }
 
-    /* Esconde setas do carrossel no mobile (usa-se o swipe) */
-    .carousel-btn { display: none; }
-    .carousel-track { padding-right: 20px; }
-
-    /* Ajuste do botão WhatsApp */
     .whatsapp-float {
         width: 55px;
         height: 55px;
@@ -740,9 +684,5 @@ footer {
     }
     .whatsapp-img { width: 30px; }
 
-    /* Botão Destaque no Menu Mobile */
-    .btn-destaque {
-        margin-top: 15px; 
-        width: 80%;
-    }
+    .btn-destaque { margin-top: 15px; width: 80%; }
 }

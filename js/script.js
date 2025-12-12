@@ -1,24 +1,58 @@
 /**
  * =========================================
- * 1. CARROSSEL DE CURSOS
+ * 1. INICIALIZAÇÃO E CARROSSEL (SPLIDE)
  * =========================================
  */
-function scrollCursos(direction) {
-    const track = document.getElementById('track-cursos');
+document.addEventListener('DOMContentLoaded', function() {
+    
+    // --- MENU MOBILE ---
+    const btnMobile = document.getElementById('mobile-btn');
+    const menuLista = document.getElementById('menu-lista');
 
-    // Verifica se o elemento existe para evitar erros
-    if (!track) return;
+    if (btnMobile && menuLista) {
+        btnMobile.addEventListener('click', function() {
+            menuLista.classList.toggle('active');
+        });
 
-    // Tamanho do card + espaçamento (gap)
-    const scrollAmount = 320;
-
-    // Usa o método scrollBy para rolagem suave nativa
-    if (direction === 1) {
-        track.scrollBy({ left: scrollAmount, behavior: 'smooth' });
-    } else {
-        track.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+        // Fecha o menu ao clicar em um link
+        const links = menuLista.querySelectorAll('a');
+        links.forEach(link => {
+            link.addEventListener('click', () => {
+                menuLista.classList.remove('active');
+            });
+        });
     }
-}
+
+    // --- CARROSSEL COM SPLIDE.JS ---
+    if (typeof Splide !== 'undefined') {
+        const elms = document.getElementsByClassName('splide');
+
+        // Inicializa todos os carrosséis encontrados na página
+        for (let i = 0; i < elms.length; i++) {
+            new Splide(elms[i], {
+                type: 'loop',       // Loop infinito
+                perPage: 3,         // 3 cards no Desktop
+                perMove: 1,
+                gap: '30px',
+                pagination: false,
+                arrows: true,
+                
+                // Responsividade
+                breakpoints: {
+                    1024: {
+                        perPage: 2, // 2 cards em Tablets
+                    },
+                    768: {
+                        perPage: 1, // 1 card em Celulares
+                        gap: '20px'
+                    }
+                }
+            }).mount();
+        }
+    } else {
+        console.warn("A biblioteca Splide.js não foi encontrada.");
+    }
+});
 
 /**
  * =========================================
@@ -30,15 +64,12 @@ function toggleWhatsApp() {
     const mainIcon = document.getElementById('wa-main-icon');
     const closeIcon = document.getElementById('wa-close-icon');
 
-    // Garante que todos os elementos necessários existem
     if (!menu || !mainIcon || !closeIcon) return;
 
-    // Alterna a classe 'open' que controla a visibilidade no CSS
     menu.classList.toggle('open');
-
     const isOpen = menu.classList.contains('open');
 
-    // Alterna a exibição entre o ícone do Logo e o 'X'
+    // Alterna entre o ícone do Logo e o 'X'
     if (isOpen) {
         mainIcon.style.display = 'none';
         closeIcon.style.display = 'block';
@@ -47,28 +78,3 @@ function toggleWhatsApp() {
         closeIcon.style.display = 'none';
     }
 }
-
-/**
- * =========================================
- * 3. INICIALIZAÇÃO E MENU MOBILE
- * =========================================
- */
-document.addEventListener('DOMContentLoaded', function() {
-    const btnMobile = document.getElementById('mobile-btn');
-    const menuLista = document.getElementById('menu-lista'); // O <ul> dentro do nav
-
-    if (btnMobile && menuLista) {
-        // Abre/Fecha o menu ao clicar no botão hambúrguer
-        btnMobile.addEventListener('click', function() {
-            menuLista.classList.toggle('active');
-        });
-
-        // (Opcional) Fecha o menu automaticamente ao clicar em um link
-        const links = menuLista.querySelectorAll('a');
-        links.forEach(link => {
-            link.addEventListener('click', () => {
-                menuLista.classList.remove('active');
-            });
-        });
-    }
-});
