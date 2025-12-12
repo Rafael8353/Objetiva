@@ -64,6 +64,20 @@ a {
     height: 70px; 
 }
 
+/* Container do Logo (Link) */
+.logo-link {
+    display: flex;
+    align-items: center;
+    gap: 10px; /* Espaço entre a imagem e o texto */
+    text-decoration: none;
+}
+
+/* Imagem do Logo */
+.logo-img {
+    height: 45px; /* Ajuste conforme necessário para caber no header */
+    width: auto;
+}
+
 .logo { 
     font-size: 1.1rem; 
     font-weight: 800; 
@@ -149,9 +163,10 @@ a {
 }
 
 /* 3. HERO SECTION (BANNER PRINCIPAL)
+   AJUSTES REALIZADOS: Altura reduzida e elementos menores
 */
 .hero {
-    min-height: 90vh;
+    min-height: 60vh; /* Reduzido de 90vh para 60vh para ocupar menos espaço */
     height: auto;
     background: url('../img/banner.jpg') no-repeat center center/cover;
     position: relative;
@@ -160,8 +175,8 @@ a {
     justify-content: center; 
     color: var(--white);
     background-color: #000; /* Fallback se a imagem falhar */
-    padding-top: 120px;
-    padding-bottom: 80px;
+    padding-top: 100px; /* Reduzido o espaçamento superior */
+    padding-bottom: 50px; /* Reduzido o espaçamento inferior */
 }
 
 /* Camada escura/verde sobre a imagem de fundo para melhorar leitura */
@@ -184,21 +199,25 @@ a {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: 50px;
+    gap: 30px; /* Gap reduzido */
     text-align: left;
 }
 
 .hero-text {
     flex: 1;
-    max-width: 600px;
+    max-width: 550px;
 }
 
 .hero h1 { 
-    font-size: 3.5rem; 
-    margin-bottom: 20px; 
+    font-size: 2.5rem; /* Fonte do título reduzida (era 3.5rem) */
+    margin-bottom: 15px; 
     font-weight: 800;
     line-height: 1.1;
     text-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+.hero p {
+    font-size: 1rem; /* Tamanho de texto ajustado */
 }
 
 .hero-image {
@@ -208,7 +227,7 @@ a {
 }
 
 .hero-banner-img {
-    max-width: 100%; 
+    max-width: 85%; /* Imagem limitada a 85% para não ficar enorme */
     height: auto;
     mix-blend-mode: multiply; /* Faz a imagem se misturar melhor com o fundo verde */
     filter: drop-shadow(0 10px 20px rgba(0,0,0,0.1));
@@ -252,7 +271,7 @@ a {
 }
 
 /* Espaçamento e Fundos de Seção */
-.section-padding { padding: 100px 0; }
+.section-padding { padding: 80px 0; /* Padding geral reduzido de 100px para 80px */ }
 
 .section-bg { 
     background-color: var(--secondary);
@@ -262,8 +281,8 @@ a {
 
 .section-title { 
     text-align: center; 
-    font-size: 2.5rem; 
-    margin-bottom: 60px; 
+    font-size: 2.2rem; /* Títulos de seção levemente reduzidos */
+    margin-bottom: 50px; 
     color: var(--primary); 
     position: relative;
     font-weight: 800;
@@ -695,11 +714,11 @@ footer {
         gap: 40px;
     }
 
-    .hero h1 { font-size: 2.5rem; }
+    .hero h1 { font-size: 2rem; /* Reduzido no mobile também */ }
     
     .hero-banner-img {
         margin: 0 auto; 
-        max-height: 280px;
+        max-height: 250px; /* Reduzido a altura máxima no mobile */
     }
 
     .btn-outline { margin: 10px 5px; }

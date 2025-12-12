@@ -19,7 +19,12 @@
     <!-- Cabeçalho e Navegação -->
     <header class="main-header">
         <div class="container">
-            <div class="logo">Objetiva Grupo de Ensino</div>
+            <!-- LOGO CLICÁVEL COM IMAGEM -->
+            <!-- Substitua "img/logo.png" pelo nome correto do seu arquivo de logo -->
+            <a href="#home" class="logo-link">
+                <img src="img/banner2.png" alt="Logo Objetiva" class="logo-img">
+                <span class="logo">Objetiva Grupo de Ensino</span>
+            </a>
             
             <!-- Botão do menu mobile (hambúrguer) -->
             <button id="mobile-btn" class="menu-icon">&#9776;</button>
@@ -32,7 +37,7 @@
                     <li><a href="#bolsas">Bolsas</a></li>
                     <li><a href="#contato">Contato</a></li>
                     <li><a href="#objetiva">Loja</a></li>
-                    <li><a href="#objetiva" class="btn-destaque">Portal do Aluno</a></li>
+                    <li><a href="ead.ouromoderno.com.br" class="btn-destaque">Portal do Aluno</a></li>
                 </ul>
             </nav>
         </div>
@@ -235,19 +240,21 @@
                     <p>Preencha seus dados ao lado e nossa equipe entrará em contato para verificar a disponibilidade de bolsas para o seu perfil.</p>
                 </div>
 
-                <form class="form-contato" action="#" method="POST">
+                <!-- AÇÃO ALTERADA: aponta para 'enviar.php' -->
+                <form class="form-contato" action="enviar.php" method="POST">
                     <h3 style="margin-bottom: 20px; color: var(--primary);">Solicitar Bolsa</h3>
                     
-                    <input type="text" placeholder="Nome do Aluno" required>
-                    <input type="email" placeholder="Seu Melhor E-mail" required>
-                    <input type="tel" placeholder="Seu WhatsApp" required> 
+                    <!-- ADICIONADO: name="nome" -->
+                    <input type="text" name="nome" placeholder="Nome do Aluno" required>
                     
-                    <select style="width: 100%; padding: 15px; margin-bottom: 15px; border: 1px solid #ccc; border-radius: 5px;">
-                        <option value="" disabled selected>Qual curso te interessa?</option>
-                        <option value="informatica">Informática</option>
-                        <option value="design">Design</option>
-                        <option value="ti">TI / Programação</option>
-                    </select>
+                    <!-- ADICIONADO: name="email" -->
+                    <input type="email" name="email" placeholder="Seu Melhor E-mail" required>
+                    
+                    <!-- ADICIONADO: name="whatsapp" -->
+                    <input type="tel" name="whatsapp" placeholder="Seu WhatsApp" required> 
+                    
+                    <!-- ALTERADO: De Select para Textarea (Campo de Texto Livre) -->
+                    <textarea name="interesse" placeholder="Qual curso ou assunto você tem interesse? Escreva aqui..." rows="3" style="width: 100%; padding: 15px; margin-bottom: 15px; border: 1px solid #ccc; border-radius: 5px; font-family: inherit; resize: vertical;" required></textarea>
                     
                     <button type="submit" class="btn-primary">Quero minha Bolsa!</button>
                 </form>
