@@ -14,7 +14,7 @@ document.addEventListener('DOMContentLoaded', function() {
             menuLista.classList.toggle('active');
         });
 
-        // Fecha o menu ao clicar em um link
+        // Fecha o menu automaticamente ao clicar em um link
         const links = menuLista.querySelectorAll('a');
         links.forEach(link => {
             link.addEventListener('click', () => {
@@ -52,11 +52,118 @@ document.addEventListener('DOMContentLoaded', function() {
     } else {
         console.warn("A biblioteca Splide.js não foi encontrada.");
     }
+
+    // --- INICIALIZA O MODAL ---
+    initModal();
 });
 
 /**
  * =========================================
- * 2. WIDGET FLUTUANTE DO WHATSAPP
+ * 2. LÓGICA DO MODAL INTELIGENTE
+ * =========================================
+ */
+function initModal() {
+    const modal = document.getElementById('modal-curso');
+    const modalContainer = document.querySelector('.modal-container'); // Para adicionar classe de tema
+    const closeBtn = document.querySelector('.close-modal');
+    
+    // Elementos Internos
+    const modalTitle = document.getElementById('modal-titulo');
+    const modalDesc = document.getElementById('modal-descricao');
+    const modalPrecos = document.getElementById('modal-precos');
+    const modalLista = document.getElementById('modal-lista-container');
+    const modalListaUl = document.getElementById('modal-lista-ul');
+    const modalWhatsapp = document.getElementById('modal-whatsapp-btn');
+    
+    // Elementos de preço
+    const precoEntrada = document.getElementById('preco-entrada');
+    const precoMensalidade = document.getElementById('preco-mensalidade');
+
+    // Seleciona botões de abrir
+    const btnsAbrir = document.querySelectorAll('.btn-abrir-modal');
+
+    btnsAbrir.forEach(btn => {
+        btn.addEventListener('click', (e) => {
+            e.preventDefault();
+
+            const card = btn.closest('.card-curso');
+            
+            // Dados básicos
+            const titulo = card.querySelector('h3').innerText;
+            const descricao = card.querySelector('p').innerText;
+            
+            // Dados Especiais (Data Attributes)
+            const tipo = card.getAttribute('data-modal-type'); // 'padrao' ou 'uniritter'
+            
+            // Preenche Básico
+            modalTitle.innerText = titulo;
+            modalDesc.innerText = descricao;
+
+            // RESET: Remove temas e esconde seções para não misturar informações
+            modalContainer.classList.remove('uniritter-theme');
+            if (modalPrecos) modalPrecos.style.display = 'none';
+            if (modalLista) modalLista.style.display = 'none';
+
+            // LÓGICA CONDICIONAL
+            if (tipo === 'uniritter') {
+                // TEMA VERMELHO (UNIRITTER)
+                modalContainer.classList.add('uniritter-theme');
+                
+                // Pega a lista de cursos do HTML
+                const listaCursos = card.getAttribute('data-lista');
+                if (listaCursos && modalLista) {
+                    modalLista.style.display = 'block';
+                    modalListaUl.innerHTML = ''; // Limpa lista anterior
+                    
+                    // Transforma a string "Curso A, Curso B" em itens de lista
+                    listaCursos.split(',').forEach(curso => {
+                        const li = document.createElement('li');
+                        li.textContent = curso.trim();
+                        modalListaUl.appendChild(li);
+                    });
+                }
+
+            } else {
+                // TEMA PADRÃO (VERDE - OBJETIVA)
+                if (modalPrecos) {
+                    modalPrecos.style.display = 'block';
+                    
+                    const entrada = card.getAttribute('data-entrada') || 'Consulte';
+                    const mensalidade = card.getAttribute('data-mensalidade') || 'Consulte';
+                    
+                    if (precoEntrada) precoEntrada.innerText = `R$ ${entrada}`;
+                    if (precoMensalidade) precoMensalidade.innerText = `R$ ${mensalidade}`;
+                }
+            }
+
+            // Link WhatsApp Dinâmico
+            const mensagem = encodeURIComponent(`Olá! Vi no site e tenho interesse em: ${titulo}. Poderia me dar mais informações?`);
+            // Número atualizado para redirecionamento
+            const telefoneDestino = "5551999869527"; 
+            modalWhatsapp.href = `https://wa.me/${telefoneDestino}?text=${mensagem}`;
+
+            // Exibe
+            modal.classList.add('active');
+        });
+    });
+
+    // Fechar Modal
+    const fecharModal = () => {
+        modal.classList.remove('active');
+    };
+
+    if (closeBtn) closeBtn.addEventListener('click', fecharModal);
+
+    window.addEventListener('click', (e) => {
+        if (e.target === modal) {
+            fecharModal();
+        }
+    });
+}
+
+/**
+ * =========================================
+ * 3. WIDGET FLUTUANTE DO WHATSAPP
  * =========================================
  */
 function toggleWhatsApp() {
@@ -69,7 +176,6 @@ function toggleWhatsApp() {
     menu.classList.toggle('open');
     const isOpen = menu.classList.contains('open');
 
-    // Alterna entre o ícone do Logo e o 'X'
     if (isOpen) {
         mainIcon.style.display = 'none';
         closeIcon.style.display = 'block';
