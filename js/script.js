@@ -1,6 +1,6 @@
 /**
  * =========================================
- * 1. INICIALIZAÇÃO E CARROSSEL (SPLIDE)
+ * 1. INICIALIZAÇÃO GERAL
  * =========================================
  */
 document.addEventListener('DOMContentLoaded', function() {
@@ -14,7 +14,7 @@ document.addEventListener('DOMContentLoaded', function() {
             menuLista.classList.toggle('active');
         });
 
-        // Fecha o menu automaticamente ao clicar em um link
+        // Fecha o menu automaticamente ao clicar num link
         const links = menuLista.querySelectorAll('a');
         links.forEach(link => {
             link.addEventListener('click', () => {
@@ -44,7 +44,8 @@ document.addEventListener('DOMContentLoaded', function() {
                     },
                     768: {
                         perPage: 1, // 1 card em Celulares
-                        gap: '20px'
+                        gap: '15px', // Espaço menor entre cards
+                        padding: '10%' // MOSTRA 10% DO PRÓXIMO CARD (Reduz o tamanho do atual)
                     }
                 }
             }).mount();
@@ -59,101 +60,119 @@ document.addEventListener('DOMContentLoaded', function() {
 
 /**
  * =========================================
- * 2. LÓGICA DO MODAL INTELIGENTE
+ * 2. LÓGICA DO MODAL (CARD FLUTUANTE)
  * =========================================
  */
 function initModal() {
     const modal = document.getElementById('modal-curso');
-    const modalContainer = document.querySelector('.modal-container'); // Para adicionar classe de tema
+    const modalContainer = document.querySelector('.modal-container'); 
     const closeBtn = document.querySelector('.close-modal');
     
-    // Elementos Internos
+    // Elementos Internos do Modal
     const modalTitle = document.getElementById('modal-titulo');
     const modalDesc = document.getElementById('modal-descricao');
-    const modalPrecos = document.getElementById('modal-precos');
-    const modalLista = document.getElementById('modal-lista-container');
-    const modalListaUl = document.getElementById('modal-lista-ul');
     const modalWhatsapp = document.getElementById('modal-whatsapp-btn');
     
-    // Elementos de preço
-    const precoEntrada = document.getElementById('preco-entrada');
-    const precoMensalidade = document.getElementById('preco-mensalidade');
+    // Seções Dinâmicas (Lista e Carga Horária)
+    const modalListaContainer = document.getElementById('modal-lista-container');
+    const modalListaTitulo = document.getElementById('modal-lista-titulo');
+    const modalListaUl = document.getElementById('modal-lista-ul');
+    const modalCargaContainer = document.getElementById('modal-carga-container');
+    const modalCargaValor = document.getElementById('modal-carga-valor');
+    
+    // CORREÇÃO: Uso de 'Event Delegation' para capturar cliques em slides clonados pelo Splide
+    document.addEventListener('click', (e) => {
+        // Verifica se o elemento clicado (ou um parente dele) é o botão de abrir modal
+        const btn = e.target.closest('.btn-abrir-modal');
+        
+        // Se não foi um clique no botão, ignora
+        if (!btn) return;
 
-    // Seleciona botões de abrir
-    const btnsAbrir = document.querySelectorAll('.btn-abrir-modal');
+        e.preventDefault();
 
-    btnsAbrir.forEach(btn => {
-        btn.addEventListener('click', (e) => {
-            e.preventDefault();
+        // Encontra o card pai para extrair as informações
+        const card = btn.closest('.card-curso');
+        if (!card) return;
+        
+        // Pega dados básicos
+        const titulo = card.querySelector('h3').innerText;
+        const descricao = card.querySelector('p').innerText;
+        const tipo = card.getAttribute('data-modal-type'); // 'padrao' ou 'uniritter'
 
-            const card = btn.closest('.card-curso');
+        // Preenche Básico
+        modalTitle.innerText = titulo;
+        modalDesc.innerText = descricao;
+
+        // RESET: Esconde seções e remove temas antigos
+        modalContainer.classList.remove('uniritter-theme');
+        if (modalListaContainer) modalListaContainer.style.display = 'none';
+        if (modalCargaContainer) modalCargaContainer.style.display = 'none';
+
+        // LÓGICA CONDICIONAL
+        if (tipo === 'uniritter') {
+            // --- TEMA UNIRITTER (Vermelho + Lista de Cursos) ---
+            modalContainer.classList.add('uniritter-theme');
             
-            // Dados básicos
-            const titulo = card.querySelector('h3').innerText;
-            const descricao = card.querySelector('p').innerText;
-            
-            // Dados Especiais (Data Attributes)
-            const tipo = card.getAttribute('data-modal-type'); // 'padrao' ou 'uniritter'
-            
-            // Preenche Básico
-            modalTitle.innerText = titulo;
-            modalDesc.innerText = descricao;
-
-            // RESET: Remove temas e esconde seções para não misturar informações
-            modalContainer.classList.remove('uniritter-theme');
-            if (modalPrecos) modalPrecos.style.display = 'none';
-            if (modalLista) modalLista.style.display = 'none';
-
-            // LÓGICA CONDICIONAL
-            if (tipo === 'uniritter') {
-                // TEMA VERMELHO (UNIRITTER)
-                modalContainer.classList.add('uniritter-theme');
-                
-                // Pega a lista de cursos do HTML
-                const listaCursos = card.getAttribute('data-lista');
-                if (listaCursos && modalLista) {
-                    modalLista.style.display = 'block';
-                    modalListaUl.innerHTML = ''; // Limpa lista anterior
-                    
-                    // Transforma a string "Curso A, Curso B" em itens de lista
-                    listaCursos.split(',').forEach(curso => {
+            const listaCursos = card.getAttribute('data-lista');
+            if (listaCursos && modalListaContainer) {
+                modalListaContainer.style.display = 'block';
+                if (modalListaTitulo) modalListaTitulo.innerText = "Cursos disponíveis:";
+                if (modalListaUl) {
+                    modalListaUl.innerHTML = '';
+                    listaCursos.split(',').forEach(item => {
                         const li = document.createElement('li');
-                        li.textContent = curso.trim();
+                        li.textContent = item.trim();
                         modalListaUl.appendChild(li);
                     });
                 }
-
-            } else {
-                // TEMA PADRÃO (VERDE - OBJETIVA)
-                if (modalPrecos) {
-                    modalPrecos.style.display = 'block';
-                    
-                    const entrada = card.getAttribute('data-entrada') || 'Consulte';
-                    const mensalidade = card.getAttribute('data-mensalidade') || 'Consulte';
-                    
-                    if (precoEntrada) precoEntrada.innerText = `R$ ${entrada}`;
-                    if (precoMensalidade) precoMensalidade.innerText = `R$ ${mensalidade}`;
-                }
             }
 
-            // Link WhatsApp Dinâmico
-            const mensagem = encodeURIComponent(`Olá! Vi no site e tenho interesse em: ${titulo}. Poderia me dar mais informações?`);
-            // Número atualizado para redirecionamento
-            const telefoneDestino = "5551999869527"; 
-            modalWhatsapp.href = `https://wa.me/${telefoneDestino}?text=${mensagem}`;
+        } else {
+            // --- TEMA PADRÃO (Verde + Módulos + Carga Horária) ---
+            
+            // 1. Carga Horária (se houver)
+            const carga = card.getAttribute('data-carga');
+            if (carga && modalCargaContainer) {
+                modalCargaContainer.style.display = 'block';
+                if (modalCargaValor) modalCargaValor.innerText = carga;
+            }
 
-            // Exibe
-            modal.classList.add('active');
-        });
+            // 2. Lista de Módulos
+            const modulos = card.getAttribute('data-modulos');
+            if (modulos && modalListaContainer) {
+                modalListaContainer.style.display = 'block';
+                if (modalListaTitulo) modalListaTitulo.innerText = "Módulos do Curso:";
+                if (modalListaUl) {
+                    modalListaUl.innerHTML = '';
+                    modulos.split(',').forEach(item => {
+                        const li = document.createElement('li');
+                        li.textContent = item.trim();
+                        modalListaUl.appendChild(li);
+                    });
+                }
+            }
+        }
+
+        // Gera o link do WhatsApp dinâmico
+        const mensagem = encodeURIComponent(`Olá! Vi no site e tenho interesse em: ${titulo}. Poderia dar-me mais informações?`);
+        const telefoneDestino = "5551999869527"; 
+        
+        if (modalWhatsapp) {
+            modalWhatsapp.href = `https://wa.me/${telefoneDestino}?text=${mensagem}`;
+        }
+
+        // Exibe o modal
+        if (modal) modal.classList.add('active');
     });
 
-    // Fechar Modal
+    // Função para fechar o modal
     const fecharModal = () => {
-        modal.classList.remove('active');
+        if (modal) modal.classList.remove('active');
     };
 
     if (closeBtn) closeBtn.addEventListener('click', fecharModal);
 
+    // Fecha ao clicar fora do conteúdo (no fundo escuro)
     window.addEventListener('click', (e) => {
         if (e.target === modal) {
             fecharModal();
@@ -176,6 +195,7 @@ function toggleWhatsApp() {
     menu.classList.toggle('open');
     const isOpen = menu.classList.contains('open');
 
+    // Alterna ícone entre Logo e X
     if (isOpen) {
         mainIcon.style.display = 'none';
         closeIcon.style.display = 'block';
