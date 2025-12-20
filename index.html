@@ -10,26 +10,25 @@
     <!-- Favicon -->
     <link rel="shortcut icon" href="img/Favicon.png" type="image/png">
     
-    <!-- Fontes e Estilos Externos -->
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+    <!-- Fontes -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&display=swap" rel="stylesheet">
     
     <!-- CSS DO SPLIDE -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide.min.css">
     
+    <!-- CSS PERSONALIZADO -->
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 
-    <!-- Cabeçalho e Navegação -->
+    <!-- Cabeçalho -->
     <header class="main-header">
         <div class="container">
-            <!-- LOGO CLICÁVEL -->
             <a href="#home" class="logo-link">
                 <img src="img/logo.png" alt="Logo Objetiva" class="logo-img">
                 <span class="logo">Objetiva Grupo de Ensino</span>
             </a>
             
-            <!-- Botão do menu mobile -->
             <button id="mobile-btn" class="menu-icon">&#9776;</button>
 
             <nav class="desktop-menu">
@@ -47,17 +46,15 @@
         </div>
     </header>
 
-    <!-- Seção Hero -->
+    <!-- Hero -->
     <section id="home" class="hero">
         <div class="overlay"></div>
-        
         <div class="container hero-container">
             <div class="hero-content">
                 <div class="hero-text">
                     <h1>Transformando vidas através da educação</h1>
                     <p>Sua jornada profissional começa aqui. Cursos práticos e projetos reais.</p>
                 </div>
-                
                 <div class="hero-image">
                     <img src="img/banner.png" alt="Banner Principal" class="hero-banner-img">
                 </div>
@@ -65,39 +62,29 @@
         </div>
     </section>
 
-    <!-- Seção de Localização -->
+    <!-- Localização -->
     <section id="localizacao" class="section-padding">
         <div class="container">
             <h2 class="section-title">Nossas Escolas</h2>
             <p style="text-align: center; margin-bottom: 40px;">Encontre a Objetiva mais perto de você!</p>
             
             <div class="mapas-grid">
-                <!-- Unidade Charqueadas -->
                 <div class="mapa-item">
                     <h3>Escola Charqueadas</h3>
                     <p>📍 Av. Getúlio Vargas, 166 - Centro</p>
                     <p>📞 <a href="tel:+5551999257290" class="tel-link">(51) 99925-7290</a></p>
-                    
                     <div class="mapa-frame">
-                        <iframe 
-                            src="https://maps.google.com/maps?q=Av.+Getulio+Vargas,+166+-+Centro,+Charqueadas+-+RS&t=&z=15&ie=UTF8&iwloc=&output=embed" 
-                            width="100%" height="300" style="border:0;" allowfullscreen="" loading="lazy">
-                        </iframe>
+                        <iframe src="https://maps.google.com/maps?q=Av.+Getulio+Vargas,+166+-+Centro,+Charqueadas+-+RS&t=&z=15&ie=UTF8&iwloc=&output=embed" width="100%" height="300" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
                     </div>
                     <a href="https://maps.app.goo.gl/16a1H9NpUNKi3YZ5A" target="_blank" class="btn-rota">Como Chegar</a>
                 </div>
 
-                <!-- Unidade Arroio dos Ratos -->
                 <div class="mapa-item">
                     <h3>Escola Arroio dos Ratos</h3>
                     <p>📍 Av. Espanha, 327 - Centro</p>
                     <p>📞 <a href="tel:+5551980402554" class="tel-link">(51) 98040-2554</a></p>
-                    
                     <div class="mapa-frame">
-                        <iframe 
-                            src="https://maps.google.com/maps?q=Av.+Espanha,+327+-+Centro,+Arroio+dos+Ratos+-+RS&t=&z=15&ie=UTF8&iwloc=&output=embed" 
-                            width="100%" height="300" style="border:0;" allowfullscreen="" loading="lazy">
-                        </iframe>
+                        <iframe src="https://maps.google.com/maps?q=Av.+Espanha,+327+-+Centro,+Arroio+dos+Ratos+-+RS&t=&z=15&ie=UTF8&iwloc=&output=embed" width="100%" height="300" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
                     </div>
                     <a href="https://maps.app.goo.gl/KvynjWrDGF6Skz4M8" target="_blank" class="btn-rota">Como Chegar</a>
                 </div>
@@ -105,7 +92,7 @@
         </div>
     </section>
 
-    <!-- Seção de Cursos (ATUALIZADA: Módulos com carga horária individual) -->
+    <!-- Cursos Disponíveis -->
     <section id="cursos" class="section-padding section-bg">
         <div class="container">
             <h2 class="section-title">Cursos Disponíveis</h2>
@@ -113,15 +100,10 @@
             <div class="splide" aria-label="Lista de Cursos">
                 <div class="splide__track">
                     <ul class="splide__list">
-                        
-                        <!-- 1. Administração e Liderança -->
+                        <!-- Card 1 -->
                         <li class="splide__slide">
-                            <div class="card-curso" 
-                                 data-modal-type="padrao" 
-                                 data-modulos="Gestão de Pessoas - 16h, Liderança - 16h, Contabilidade Básica - 14h, Rotinas Administrativas - 14h, Matemática Financeira - 12h">
-                                <div class="card-img-top">
-                                    <img src="img/Administração.png" alt="Administração e Liderança">
-                                </div>
+                            <div class="card-curso" data-modal-type="padrao" data-modulos="Gestão de Pessoas - 16h, Liderança - 16h, Contabilidade Básica - 14h, Rotinas Administrativas - 14h, Matemática Financeira - 12h">
+                                <div class="card-img-top"><img src="img/Administração.png" alt="Administração e Liderança"></div>
                                 <div class="card-body">
                                     <h3>Administração e Liderança</h3>
                                     <p>Gestão de equipes e negócios.</p>
@@ -129,15 +111,10 @@
                                 </div>
                             </div>
                         </li>
-
-                        <!-- 2. Assistente Comercial -->
+                        <!-- Card 2 -->
                         <li class="splide__slide">
-                            <div class="card-curso"
-                                 data-modal-type="padrao" 
-                                 data-modulos="Técnicas de Vendas - 12h, Atendimento ao Cliente - 12h, Marketing Pessoal - 12h, Operador de Caixa - 12h, Estoque - 12h">
-                                <div class="card-img-top">
-                                    <img src="img/Assistente.png" alt="Assistente Comercial">
-                                </div>
+                            <div class="card-curso" data-modal-type="padrao" data-modulos="Técnicas de Vendas - 12h, Atendimento ao Cliente - 12h, Marketing Pessoal - 12h, Operador de Caixa - 12h, Estoque - 12h">
+                                <div class="card-img-top"><img src="img/Assistente.png" alt="Assistente Comercial"></div>
                                 <div class="card-body">
                                     <h3>Assistente Comercial</h3>
                                     <p>Atendimento ao cliente, vendas e rotinas administrativas.</p>
@@ -145,15 +122,10 @@
                                 </div>
                             </div>
                         </li>
-
-                        <!-- 3. Design Gráfico -->
+                        <!-- Card 3 -->
                         <li class="splide__slide">
-                            <div class="card-curso"
-                                 data-modal-type="padrao" 
-                                 data-modulos="CorelDRAW - 20h, Photoshop - 20h, Canva - 10h, Teoria das Cores - 10h, Criação de Logotipos - 10h, Social Media - 10h">
-                                <div class="card-img-top">
-                                    <img src="img/Design.png" alt="Design Gráfico">
-                                </div>
+                            <div class="card-curso" data-modal-type="padrao" data-modulos="CorelDRAW - 20h, Photoshop - 20h, Canva - 10h, Teoria das Cores - 10h, Criação de Logotipos - 10h, Social Media - 10h">
+                                <div class="card-img-top"><img src="img/Design.png" alt="Design Gráfico"></div>
                                 <div class="card-body">
                                     <h3>Design Gráfico</h3>
                                     <p>Criação de artes, marketing e redes sociais.</p>
@@ -161,15 +133,10 @@
                                 </div>
                             </div>
                         </li>
-
-                        <!-- 4. EJA Online -->
+                        <!-- Card 4 -->
                         <li class="splide__slide">
-                            <div class="card-curso"
-                                 data-modal-type="padrao" 
-                                 data-modulos="Ensino Fundamental Completo, Ensino Médio Completo, Suporte Pedagógico, Provas Online">
-                                <div class="card-img-top">
-                                    <img src="img/Eja.png" alt="EJA Online">
-                                </div>
+                            <div class="card-curso" data-modal-type="padrao" data-modulos="Ensino Fundamental Completo, Ensino Médio Completo, Suporte Pedagógico, Provas Online">
+                                <div class="card-img-top"><img src="img/Eja.png" alt="EJA Online"></div>
                                 <div class="card-body">
                                     <h3>EJA Online</h3>
                                     <p>Educação de Jovens e Adultos - Conclua seus estudos.</p>
@@ -177,15 +144,10 @@
                                 </div>
                             </div>
                         </li>
-
-                        <!-- 5. Formações Personalizadas -->
+                        <!-- Card 5 -->
                         <li class="splide__slide">
-                            <div class="card-curso"
-                                 data-modal-type="padrao" 
-                                 data-modulos="Consultoria para Empresas, Treinamentos Específicos, Aulas Particulares, Mentoria VIP">
-                                <div class="card-img-top">
-                                    <img src="img/Personalizadas.png" alt="Formações Personalizadas">
-                                </div>
+                            <div class="card-curso" data-modal-type="padrao" data-modulos="Consultoria para Empresas, Treinamentos Específicos, Aulas Particulares, Mentoria VIP">
+                                <div class="card-img-top"><img src="img/Personalizadas.png" alt="Formações Personalizadas"></div>
                                 <div class="card-body">
                                     <h3>Formações Personalizadas</h3>
                                     <p>Cursos sob medida para sua empresa ou necessidade.</p>
@@ -193,15 +155,10 @@
                                 </div>
                             </div>
                         </li>
-
-                        <!-- 6. Informática e IA -->
+                        <!-- Card 6 -->
                         <li class="splide__slide">
-                            <div class="card-curso"
-                                 data-modal-type="padrao" 
-                                 data-modulos="Windows 11 - 16h, Word - 16h, Excel - 16h, PowerPoint - 16h, Internet - 16h, Digitação - 8h, Ferramentas de IA - 8h">
-                                <div class="card-img-top">
-                                    <img src="img/Informatica.png" alt="Informática e IA">
-                                </div>
+                            <div class="card-curso" data-modal-type="padrao" data-modulos="Windows 11 - 16h, Word - 16h, Excel - 16h, PowerPoint - 16h, Internet - 16h, Digitação - 8h, Ferramentas de IA - 8h">
+                                <div class="card-img-top"><img src="img/Informatica.png" alt="Informática e IA"></div>
                                 <div class="card-body">
                                     <h3>Informática e IA</h3>
                                     <p>Domine as ferramentas digitais e inteligência artificial.</p>
@@ -209,15 +166,10 @@
                                 </div>
                             </div>
                         </li>
-
-                        <!-- 7. Informática Kids -->
+                        <!-- Card 7 -->
                         <li class="splide__slide">
-                            <div class="card-curso"
-                                 data-modal-type="padrao" 
-                                 data-modulos="Introdução ao Computador - 8h, Paint - 8h, Word Básico - 8h, PowerPoint Básico - 8h, Internet Segura - 8h, Jogos Educativos - 8h">
-                                <div class="card-img-top">
-                                    <img src="img/Kids.png" alt="Informática Kids">
-                                </div>
+                            <div class="card-curso" data-modal-type="padrao" data-modulos="Introdução ao Computador - 8h, Paint - 8h, Word Básico - 8h, PowerPoint Básico - 8h, Internet Segura - 8h, Jogos Educativos - 8h">
+                                <div class="card-img-top"><img src="img/Kids.png" alt="Informática Kids"></div>
                                 <div class="card-body">
                                     <h3>Informática Kids</h3>
                                     <p>Introdução à informática para crianças.</p>
@@ -225,15 +177,10 @@
                                 </div>
                             </div>
                         </li>
-
-                        <!-- 8. Pacote Office -->
+                        <!-- Card 8 -->
                         <li class="splide__slide">
-                            <div class="card-curso"
-                                 data-modal-type="padrao" 
-                                 data-modulos="Microsoft Word Avançado - 15h, Microsoft Excel Avançado - 20h, Microsoft PowerPoint - 15h, Outlook - 10h">
-                                <div class="card-img-top">
-                                    <img src="img/Office.png" alt="Pacote Office">
-                                </div>
+                            <div class="card-curso" data-modal-type="padrao" data-modulos="Microsoft Word Avançado - 15h, Microsoft Excel Avançado - 20h, Microsoft PowerPoint - 15h, Outlook - 10h">
+                                <div class="card-img-top"><img src="img/Office.png" alt="Pacote Office"></div>
                                 <div class="card-body">
                                     <h3>Pacote Office</h3>
                                     <p>Domine Word, Excel, PowerPoint e mais.</p>
@@ -241,27 +188,23 @@
                                 </div>
                             </div>
                         </li>
-
                     </ul>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Graduação Uniritter (ORDEM ALFABÉTICA) -->
+    <!-- Graduação Uniritter -->
     <section id="uniritter" class="section-padding">
         <div class="container">
             <h2 class="section-title">Graduação Uniritter</h2>
-            
             <div class="splide splide-uniritter" aria-label="Cursos Uniritter">
                 <div class="splide__track">
                     <ul class="splide__list">
-                        <!-- 1. Graduação -->
+                        <!-- Card 1 -->
                         <li class="splide__slide">
                             <div class="card-curso" data-modal-type="uniritter" data-lista="Direito, Psicologia, Enfermagem, Biomedicina, Engenharia Civil, Arquitetura e Urbanismo, Fisioterapia, Nutrição, Medicina Veterinária">
-                                <div class="card-img-top">
-                                    <img src="img/Graduação.png" alt="Graduação Uniritter">
-                                </div>
+                                <div class="card-img-top"><img src="img/Graduação.png" alt="Graduação Uniritter"></div>
                                 <div class="card-body">
                                     <h3>Graduação</h3>
                                     <p>Várias opções de cursos presenciais e EAD.</p>
@@ -269,13 +212,10 @@
                                 </div>
                             </div>
                         </li>
-                        
-                        <!-- 2. MBA -->
+                        <!-- Card 2 -->
                         <li class="splide__slide">
                             <div class="card-curso" data-modal-type="uniritter" data-lista="Gestão Empresarial, Liderança e Coaching, Gestão de Pessoas, Marketing Digital, Gestão de Negócios, Gestão Financeira">
-                                <div class="card-img-top">
-                                    <img src="img/MBA.png" alt="MBA Uniritter">
-                                </div>
+                                <div class="card-img-top"><img src="img/MBA.png" alt="MBA Uniritter"></div>
                                 <div class="card-body">
                                     <h3>MBA</h3>
                                     <p>Gestão avançada para líderes e empreendedores.</p>
@@ -283,13 +223,10 @@
                                 </div>
                             </div>
                         </li>
-
-                        <!-- 3. Pós Graduação -->
+                        <!-- Card 3 -->
                         <li class="splide__slide">
                             <div class="card-curso" data-modal-type="uniritter" data-lista="Gestão de Projetos, Direito Digital, Psicopedagogia, Engenharia de Segurança do Trabalho, Marketing Estratégico, Finanças Corporativas">
-                                <div class="card-img-top">
-                                    <img src="img/Pós.png" alt="Pós-Graduação Uniritter">
-                                </div>
+                                <div class="card-img-top"><img src="img/Pós.png" alt="Pós-Graduação Uniritter"></div>
                                 <div class="card-body">
                                     <h3>Pós Graduação</h3>
                                     <p>Especialize-se em diversas áreas do conhecimento.</p>
@@ -303,24 +240,20 @@
         </div>
     </section>
 
-    <!-- Seção de Bolsas (Centralizada) -->
+    <!-- Bolsas -->
     <section id="bolsas" class="section-padding section-bg">
         <div class="container">
             <h2 class="section-title">Bolsas de Estudos</h2>
-            <p style="text-align: center; margin-bottom: 30px; max-width: 700px; margin-left: auto; margin-right: auto;">
+            <p style="text-align: center; margin-bottom: 30px; max-width: 800px; margin-left: auto; margin-right: auto; line-height: 1.6;">
                 Preencha o formulário abaixo e nossa equipe entrará em contato para verificar a disponibilidade de bolsas para o seu perfil.
             </p>
-            
             <div style="max-width: 600px; margin: 0 auto;">
                 <form class="form-contato" action="enviar.php" method="POST">
                     <h3 style="margin-bottom: 20px; color: var(--primary); text-align: center;">Solicitar Bolsa</h3>
-                    
                     <input type="text" name="nome" placeholder="Nome do Aluno" required>
                     <input type="email" name="email" placeholder="Seu Melhor E-mail" required>
                     <input type="tel" name="whatsapp" placeholder="Seu WhatsApp" required> 
-                    
                     <textarea name="interesse" placeholder="Qual curso ou assunto você tem interesse? Escreva aqui..." rows="3" style="width: 100%; padding: 15px; margin-bottom: 15px; border: 1px solid #ccc; border-radius: 5px; font-family: inherit; resize: vertical;" required></textarea>
-                    
                     <button type="submit" class="btn-primary">Quero minha Bolsa!</button>
                 </form>
             </div>
@@ -331,28 +264,18 @@
     <section id="contato" class="section-padding">
         <div class="container">
             <h2 class="section-title">Fale Conosco</h2>
-            
             <div style="text-align: center; max-width: 900px; margin: 0 auto;">
-                <p style="font-size: 1.1rem; margin-bottom: 40px;">
-                    Estamos prontos para atender você. Escolha o canal de sua preferência:
-                </p>
-
+                <p style="font-size: 1.1rem; margin-bottom: 40px;">Estamos prontos para atender você. Escolha o canal de sua preferência:</p>
                 <div class="contato-grid"> 
                     <div class="mapa-item">
                         <h3>✉️ E-mail</h3>
                         <p><a href="mailto:contato@objetiva.com.br" class="email-link">contato@objetiva.com.br</a></p>
                     </div>
-
                     <div class="mapa-item">
                         <h3>📱 Redes Sociais</h3>
-                        <p>Siga nosso dia a dia:</p>
                         <div class="social-icons">
-                            <a href="https://www.instagram.com/objetivagrupodeensino/" target="_blank">
-                                <img src="img/Instagram-logo.png" alt="Instagram">
-                            </a>
-                            <a href="https://www.facebook.com/objetivagrupodeensino/" target="_blank">
-                                <img src="img/Facebook-logo.png" alt="Facebook">
-                            </a>
+                            <a href="https://www.instagram.com/objetivagrupodeensino/" target="_blank"><img src="img/Instagram-logo.png" alt="Instagram"></a>
+                            <a href="https://www.facebook.com/objetivagrupodeensino/" target="_blank"><img src="img/Facebook-logo.png" alt="Facebook"></a>
                         </div>
                     </div>
                 </div>
@@ -364,12 +287,8 @@
     <section id="objetiva" class="section-padding section-bg">
         <div class="container">
             <h2 class="section-title">Objetiva Informática</h2>
-            
             <div style="text-align: center; max-width: 800px; margin: 0 auto;">
-                <p style="margin-bottom: 30px;">
-                    Há anos no mercado formando profissionais qualificados. Além de ensino, oferecemos produtos de informática de alta qualidade.
-                </p>
-                
+                <p style="margin-bottom: 30px;">Há anos no mercado formando profissionais qualificados. Além de ensino, oferecemos produtos de informática de alta qualidade.</p>
                 <a href="https://www.objetivaloja.com.br/" target="_blank" class="link-loja">
                     <img src="img/Loja.png" alt="Visite nossa Loja Virtual" class="img-loja">
                     <span class="btn-loja">Acessar Loja Virtual →</span>
@@ -392,37 +311,29 @@
                 <span class="wa-label">Escola de Charqueadas</span>
                 <span class="wa-icon">&#128172;</span>
             </a>
-            
             <a href="https://wa.me/5551980402554?text=Ol%C3%A1!+Gostaria+de+saber+mais+sobre+os+cursos+na+escola+de+Arroio+dos+Ratos." target="_blank" class="wa-option">
                 <span class="wa-label">Escola de Arroio dos Ratos</span>
                 <span class="wa-icon">&#128172;</span>
             </a>
         </div>
-
         <button class="whatsapp-float" onclick="toggleWhatsApp()">
             <img src="img/Whatsapp-logo.png" alt="WhatsApp" class="whatsapp-img" id="wa-main-icon">
             <span id="wa-close-icon" style="display:none; font-size: 30px; color: white;">&times;</span>
         </button>
     </div>
 
-    <!-- Modal Flutuante -->
+    <!-- Modal -->
     <div id="modal-curso" class="modal-container">
         <div class="modal-content">
             <span class="close-modal">&times;</span>
             <h3 id="modal-titulo">Nome do Curso</h3>
-            <p id="modal-descricao">Descrição do curso.</p>
-            
+            <p id="modal-descricao">Descrição.</p>
             <div id="modal-lista-container" class="modal-course-list" style="display: none;">
-                <p><strong id="modal-lista-titulo">Cursos disponíveis:</strong></p>
+                <p><strong id="modal-lista-titulo">Conteúdo:</strong></p>
                 <ul id="modal-lista-ul"></ul>
             </div>
-
-            <!-- Preços removidos do modal conforme solicitado, mantendo apenas lista de módulos -->
-            
             <div class="modal-actions">
-                <a href="#" id="modal-whatsapp-btn" class="btn-primary" target="_blank">
-                    Falar com Consultor
-                </a>
+                <a href="#" id="modal-whatsapp-btn" class="btn-primary" target="_blank">Falar com Consultor</a>
             </div>
         </div>
     </div>
@@ -430,6 +341,5 @@
     <!-- Scripts -->
     <script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/js/splide.min.js"></script>
     <script src="js/script.js"></script>
-
 </body>
 </html>

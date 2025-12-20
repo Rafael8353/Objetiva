@@ -731,7 +731,7 @@ footer {
 .modal-course-list ul { padding-left: 20px; }
 .modal-course-list li { margin-bottom: 5px; color: #555; }
 
-/* Tema Vermelho (Uniritter) */
+/* Tema Vermelho (Uniritter) dentro do Modal */
 .modal-container.uniritter-theme .modal-content {
     border-top: 5px solid #b30000;
 }
@@ -752,7 +752,7 @@ footer {
     gap: 10px;
 }
 
-/* 11. RESPONSIVIDADE */
+/* 11. RESPONSIVIDADE (MOBILE) */
 @media (max-width: 768px) {
     .menu-icon { display: block; }
     
@@ -783,7 +783,22 @@ footer {
 
     /* Redução de Espaçamento Geral */
     .section-padding { padding: 40px 0; } 
-    .card-body { padding: 20px; } 
+    .card-body { padding: 15px; } 
+
+    /* --- CORREÇÃO DE IMAGENS DO CARROSSEL MOBILE --- */
+    .card-img-top {
+        height: auto; 
+        padding: 0;
+        background-color: transparent;
+        display: block; 
+    }
+
+    .card-img-top img {
+        width: 100%;       
+        height: auto;      
+        object-fit: contain; 
+        display: block;
+    }
 
     .splide { padding: 0; }
     .splide__arrow { width: 2.5rem; height: 2.5rem; }
@@ -791,7 +806,14 @@ footer {
     .splide__arrow--next { right: 5px; }
 
     .btn-outline { margin: 10px 5px; }
-    .contato-grid { grid-template-columns: 1fr; gap: 40px; }
+    
+    .contato-grid, 
+    #contato .contato-grid, 
+    #bolsas .contato-grid { 
+        grid-template-columns: 1fr; 
+        gap: 40px; 
+    }
+    
     .mapas-grid { grid-template-columns: 1fr; }
 
     .whatsapp-float {

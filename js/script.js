@@ -7,18 +7,18 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // --- MENU MOBILE ---
     const btnMobile = document.getElementById('mobile-btn');
-    const menuLista = document.getElementById('menu-lista');
+    const navMenu = document.querySelector('.desktop-menu'); // Seletor ajustado para a versão sem Bootstrap
 
-    if (btnMobile && menuLista) {
+    if (btnMobile && navMenu) {
         btnMobile.addEventListener('click', function() {
-            menuLista.classList.toggle('active');
+            navMenu.classList.toggle('active');
         });
 
         // Fecha o menu automaticamente ao clicar num link
-        const links = menuLista.querySelectorAll('a');
+        const links = navMenu.querySelectorAll('a');
         links.forEach(link => {
             link.addEventListener('click', () => {
-                menuLista.classList.remove('active');
+                navMenu.classList.remove('active');
             });
         });
     }
@@ -44,8 +44,8 @@ document.addEventListener('DOMContentLoaded', function() {
                     },
                     768: {
                         perPage: 1, // 1 card em Celulares
-                        gap: '15px', // Espaço menor entre cards
-                        padding: '10%' // MOSTRA 10% DO PRÓXIMO CARD (Reduz o tamanho do atual)
+                        gap: '15px',
+                        padding: '0' // Sem padding lateral no mobile para focar no card inteiro
                     }
                 }
             }).mount();
@@ -77,22 +77,18 @@ function initModal() {
     const modalListaContainer = document.getElementById('modal-lista-container');
     const modalListaTitulo = document.getElementById('modal-lista-titulo');
     const modalListaUl = document.getElementById('modal-lista-ul');
-    const modalCargaContainer = document.getElementById('modal-carga-container');
-    const modalCargaValor = document.getElementById('modal-carga-valor');
     
-    // CORREÇÃO: Uso de 'Event Delegation' para capturar cliques em slides clonados pelo Splide
+    // Seleciona todos os botões que abrem o modal
+    // Usamos 'document' para delegar o evento, garantindo que funcione nos clones do Splide
     document.addEventListener('click', (e) => {
-        // Verifica se o elemento clicado (ou um parente dele) é o botão de abrir modal
         const btn = e.target.closest('.btn-abrir-modal');
         
-        // Se não foi um clique no botão, ignora
-        if (!btn) return;
+        if (!btn) return; // Se não clicou no botão, sai da função
 
         e.preventDefault();
 
         // Encontra o card pai para extrair as informações
         const card = btn.closest('.card-curso');
-        if (!card) return;
         
         // Pega dados básicos
         const titulo = card.querySelector('h3').innerText;
@@ -106,50 +102,41 @@ function initModal() {
         // RESET: Esconde seções e remove temas antigos
         modalContainer.classList.remove('uniritter-theme');
         if (modalListaContainer) modalListaContainer.style.display = 'none';
-        if (modalCargaContainer) modalCargaContainer.style.display = 'none';
 
-        // LÓGICA CONDICIONAL
+        // Limpa a lista anterior
+        if (modalListaUl) modalListaUl.innerHTML = '';
+
+        // --- LÓGICA CONDICIONAL ---
+        
         if (tipo === 'uniritter') {
-            // --- TEMA UNIRITTER (Vermelho + Lista de Cursos) ---
+            // TEMA UNIRITTER (Vermelho + Lista de Cursos)
             modalContainer.classList.add('uniritter-theme');
             
             const listaCursos = card.getAttribute('data-lista');
-            if (listaCursos && modalListaContainer) {
+            if (listaCursos) {
                 modalListaContainer.style.display = 'block';
-                if (modalListaTitulo) modalListaTitulo.innerText = "Cursos disponíveis:";
-                if (modalListaUl) {
-                    modalListaUl.innerHTML = '';
-                    listaCursos.split(',').forEach(item => {
-                        const li = document.createElement('li');
-                        li.textContent = item.trim();
-                        modalListaUl.appendChild(li);
-                    });
-                }
+                modalListaTitulo.innerText = "Cursos disponíveis:";
+                
+                listaCursos.split(',').forEach(item => {
+                    const li = document.createElement('li');
+                    li.textContent = item.trim();
+                    modalListaUl.appendChild(li);
+                });
             }
 
         } else {
-            // --- TEMA PADRÃO (Verde + Módulos + Carga Horária) ---
+            // TEMA PADRÃO (Verde + Módulos com carga horária)
             
-            // 1. Carga Horária (se houver)
-            const carga = card.getAttribute('data-carga');
-            if (carga && modalCargaContainer) {
-                modalCargaContainer.style.display = 'block';
-                if (modalCargaValor) modalCargaValor.innerText = carga;
-            }
-
-            // 2. Lista de Módulos
             const modulos = card.getAttribute('data-modulos');
-            if (modulos && modalListaContainer) {
+            if (modulos) {
                 modalListaContainer.style.display = 'block';
-                if (modalListaTitulo) modalListaTitulo.innerText = "Módulos do Curso:";
-                if (modalListaUl) {
-                    modalListaUl.innerHTML = '';
-                    modulos.split(',').forEach(item => {
-                        const li = document.createElement('li');
-                        li.textContent = item.trim();
-                        modalListaUl.appendChild(li);
-                    });
-                }
+                modalListaTitulo.innerText = "Módulos do Curso:";
+                
+                modulos.split(',').forEach(item => {
+                    const li = document.createElement('li');
+                    li.textContent = item.trim();
+                    modalListaUl.appendChild(li);
+                });
             }
         }
 
@@ -157,17 +144,15 @@ function initModal() {
         const mensagem = encodeURIComponent(`Olá! Vi no site e tenho interesse em: ${titulo}. Poderia dar-me mais informações?`);
         const telefoneDestino = "5551999869527"; 
         
-        if (modalWhatsapp) {
-            modalWhatsapp.href = `https://wa.me/${telefoneDestino}?text=${mensagem}`;
-        }
+        modalWhatsapp.href = `https://wa.me/${telefoneDestino}?text=${mensagem}`;
 
         // Exibe o modal
-        if (modal) modal.classList.add('active');
+        modal.classList.add('active');
     });
 
     // Função para fechar o modal
     const fecharModal = () => {
-        if (modal) modal.classList.remove('active');
+        modal.classList.remove('active');
     };
 
     if (closeBtn) closeBtn.addEventListener('click', fecharModal);
