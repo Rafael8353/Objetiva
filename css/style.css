@@ -1,16 +1,23 @@
-/* 1. CONFIGURAÇÕES GERAIS */
+/* =========================================
+   1. CONFIGURAÇÕES GERAIS E VARIÁVEIS
+   ========================================= */
 :root {
+    /* Cores da Marca */
     --primary: #008f4c;
     --primary-gradient: linear-gradient(135deg, #9cc837 0%, #008f4c 100%);
     --primary-dark: #00753e;
     --secondary: #e6f4ea; 
+    
+    /* Cores Neutras */
     --text: #212529;
     --light: #f8f9fa;
     --white: #ffffff;
+    
+    /* Sombras */
     --shadow: 0 10px 30px rgba(0,0,0,0.08);
 }
 
-/* Reset para evitar scroll horizontal indesejado */
+/* Reset Global */
 * {
     margin: 0;
     padding: 0;
@@ -28,7 +35,7 @@ body {
     padding: 0; 
     color: var(--text); 
     background-color: var(--white);
-    padding-top: 70px; 
+    padding-top: 70px; /* Compensação do cabeçalho fixo */
     overflow-x: hidden;
     width: 100%;
 }
@@ -44,9 +51,11 @@ a {
     transition: all 0.3s ease; 
 }
 
-/* 2. CABEÇALHO */
+/* =========================================
+   2. CABEÇALHO (HEADER)
+   ========================================= */
 .main-header {
-    background: rgba(255, 255, 255, 0.9);
+    background: rgba(255, 255, 255, 0.95);
     backdrop-filter: blur(10px); 
     -webkit-backdrop-filter: blur(10px); 
     box-shadow: 0 4px 20px rgba(0,0,0,0.05);
@@ -123,7 +132,7 @@ a {
 .desktop-menu a:hover { color: var(--primary); }
 .desktop-menu a:hover::after { width: 100%; }
 
-/* Botão Destaque */
+/* Botão Destaque (Portal do Aluno) */
 .btn-destaque { 
     background: var(--primary-gradient); 
     color: var(--white) !important; 
@@ -159,7 +168,9 @@ a {
     color: var(--primary); 
 }
 
-/* 3. HERO (BANNER) */
+/* =========================================
+   3. SEÇÃO HERO (BANNER)
+   ========================================= */
 .hero {
     min-height: 60vh; 
     height: auto;
@@ -225,7 +236,9 @@ a {
     filter: drop-shadow(0 10px 20px rgba(0,0,0,0.1));
 }
 
-/* 4. BOTÕES E UTILITÁRIOS */
+/* =========================================
+   4. BOTÕES E UTILITÁRIOS GERAIS
+   ========================================= */
 .btn-primary { 
     background: var(--primary-gradient); 
     color: var(--white); 
@@ -285,7 +298,9 @@ a {
     border-radius: 10px;
 }
 
-/* 5. CARROSSEL (SPLIDE) */
+/* =========================================
+   5. CARROSSEL (SPLIDE)
+   ========================================= */
 .splide { padding: 0 60px; }
 
 .splide__arrow {
@@ -296,6 +311,21 @@ a {
     width: 3.5rem;  
     height: 3.5rem; 
     border-radius: 50%;
+}
+
+.splide__arrow svg {
+    fill: white; 
+    width: 20px;  
+    height: 20px; 
+}
+
+.splide__arrow--prev { left: 10px; }
+.splide__arrow--next { right: 10px; }
+
+.splide__arrow:hover {
+    transform: scale(1.1) translateY(-50%); 
+    filter: brightness(1.1);
+    box-shadow: 0 6px 20px rgba(0,0,0,0.3);
 }
 
 /* Tema Uniritter (Vermelho) */
@@ -312,22 +342,7 @@ a {
 #uniritter .btn-link { color: #b30000; }
 #uniritter .btn-link:hover { color: #800000; text-decoration: underline; }
 
-.splide__arrow--prev { left: 10px; }
-.splide__arrow--next { right: 10px; }
-
-.splide__arrow:hover {
-    transform: scale(1.1) translateY(-50%); 
-    filter: brightness(1.1);
-    box-shadow: 0 6px 20px rgba(0,0,0,0.3);
-}
-
-.splide__arrow svg {
-    fill: white; 
-    width: 20px;  
-    height: 20px; 
-}
-
-/* Card Curso */
+/* Estilo do Card do Curso */
 .card-curso {
     background: var(--white);
     border-radius: 20px;
@@ -389,7 +404,9 @@ a {
 }
 .btn-link:hover { color: var(--primary-dark); text-decoration: underline; }
 
-/* 6. FORMULÁRIOS */
+/* =========================================
+   6. FORMULÁRIOS
+   ========================================= */
 .contato-grid { 
     display: grid; 
     grid-template-columns: 1fr 1fr; 
@@ -460,7 +477,9 @@ a {
 .email-link:hover, .tel-link:hover { color: var(--primary); }
 .tel-link { text-decoration: none; }
 
-/* 7. MAPAS E LOJA */
+/* =========================================
+   7. MAPAS E LOJA
+   ========================================= */
 .mapas-grid {
     display: grid;
     grid-template-columns: 1fr 1fr; 
@@ -562,7 +581,9 @@ a {
 }
 .social-icons img:hover { transform: scale(1.2) rotate(5deg); }
 
-/* 8. RODAPÉ */
+/* =========================================
+   8. RODAPÉ E WIDGETS
+   ========================================= */
 footer { 
     background: linear-gradient(135deg, #006030 0%, #004d26 100%);
     color: var(--white); 
@@ -572,7 +593,6 @@ footer {
     opacity: 0.95;
 }
 
-/* 9. WIDGET WHATSAPP */
 .whatsapp-container {
     position: fixed;
     bottom: 30px;
@@ -648,7 +668,9 @@ footer {
     100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
 }
 
-/* 10. ESTILOS DO MODAL */
+/* =========================================
+   9. ESTILOS DO MODAL (CARD FLUTUANTE)
+   ========================================= */
 .modal-container {
     display: none; 
     position: fixed;
@@ -739,6 +761,10 @@ footer {
 .modal-container.uniritter-theme #modal-whatsapp-btn {
     background: linear-gradient(135deg, #ff4b4b 0%, #b30000 100%);
 }
+.modal-container.uniritter-theme .modal-info-workload {
+    background: #fff0f0;
+    color: #b30000;
+}
 
 .modal-actions {
     display: flex;
@@ -750,9 +776,18 @@ footer {
     display: flex;
     align-items: center;
     gap: 10px;
+    padding: 15px 35px;
+    border-radius: 50px;
+    background: var(--primary-gradient);
+    color: white;
+    font-weight: 700;
+    transition: 0.3s;
 }
+#modal-whatsapp-btn:hover { filter: brightness(0.95); transform: translateY(-2px); }
 
-/* 11. RESPONSIVIDADE (MOBILE) */
+/* =========================================
+   10. RESPONSIVIDADE (MOBILE)
+   ========================================= */
 @media (max-width: 768px) {
     .menu-icon { display: block; }
     
@@ -785,25 +820,19 @@ footer {
     .section-padding { padding: 40px 0; } 
     .card-body { padding: 15px; } 
 
-    /* --- CORREÇÃO DE IMAGENS DO CARROSSEL MOBILE --- */
-    .card-img-top {
-        height: auto; 
-        padding: 0;
-        background-color: transparent;
-        display: block; 
-    }
-
-    .card-img-top img {
-        width: 100%;       
-        height: auto;      
-        object-fit: contain; 
-        display: block;
-    }
-
+    /* Ajustes Splide */
     .splide { padding: 0; }
     .splide__arrow { width: 2.5rem; height: 2.5rem; }
     .splide__arrow--prev { left: 5px; }
     .splide__arrow--next { right: 5px; }
+
+    /* Ajuste de Imagem no Mobile (Evita ficar gigante) */
+    .card-img-top img {
+        width: 100%;
+        height: auto;
+        max-height: 200px; /* Trava a altura para não estourar */
+        object-fit: contain; /* Garante que a imagem apareça toda */
+    }
 
     .btn-outline { margin: 10px 5px; }
     

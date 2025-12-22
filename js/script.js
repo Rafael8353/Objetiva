@@ -7,14 +7,15 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // --- MENU MOBILE ---
     const btnMobile = document.getElementById('mobile-btn');
-    const navMenu = document.querySelector('.desktop-menu'); // Seletor ajustado para a versão sem Bootstrap
+    const navMenu = document.querySelector('.desktop-menu');
 
     if (btnMobile && navMenu) {
+        // Alternar menu ao clicar no botão
         btnMobile.addEventListener('click', function() {
             navMenu.classList.toggle('active');
         });
 
-        // Fecha o menu automaticamente ao clicar num link
+        // Fechar menu ao clicar em qualquer link
         const links = navMenu.querySelectorAll('a');
         links.forEach(link => {
             link.addEventListener('click', () => {
@@ -45,7 +46,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     768: {
                         perPage: 1, // 1 card em Celulares
                         gap: '15px',
-                        padding: '0' // Sem padding lateral no mobile para focar no card inteiro
+                        padding: '0' // Importante: 0 padding para focar no card inteiro
                     }
                 }
             }).mount();
@@ -73,24 +74,26 @@ function initModal() {
     const modalDesc = document.getElementById('modal-descricao');
     const modalWhatsapp = document.getElementById('modal-whatsapp-btn');
     
-    // Seções Dinâmicas (Lista e Carga Horária)
+    // Seções Dinâmicas (Listas e Carga Horária)
     const modalListaContainer = document.getElementById('modal-lista-container');
     const modalListaTitulo = document.getElementById('modal-lista-titulo');
     const modalListaUl = document.getElementById('modal-lista-ul');
+    const modalCargaContainer = document.getElementById('modal-carga-container');
+    const modalCargaValor = document.getElementById('modal-carga-valor');
     
-    // Seleciona todos os botões que abrem o modal
-    // Usamos 'document' para delegar o evento, garantindo que funcione nos clones do Splide
+    // Usamos 'Event Delegation' para capturar cliques (inclusive em clones do Splide)
     document.addEventListener('click', (e) => {
+        // Verifica se clicou num botão de abrir modal
         const btn = e.target.closest('.btn-abrir-modal');
         
-        if (!btn) return; // Se não clicou no botão, sai da função
+        if (!btn) return; 
 
         e.preventDefault();
 
-        // Encontra o card pai para extrair as informações
+        // Encontra o card pai para extrair os dados
         const card = btn.closest('.card-curso');
         
-        // Pega dados básicos
+        // Extrai dados básicos
         const titulo = card.querySelector('h3').innerText;
         const descricao = card.querySelector('p').innerText;
         const tipo = card.getAttribute('data-modal-type'); // 'padrao' ou 'uniritter'
@@ -99,11 +102,10 @@ function initModal() {
         modalTitle.innerText = titulo;
         modalDesc.innerText = descricao;
 
-        // RESET: Esconde seções e remove temas antigos
+        // RESET: Limpa estados anteriores
         modalContainer.classList.remove('uniritter-theme');
         if (modalListaContainer) modalListaContainer.style.display = 'none';
-
-        // Limpa a lista anterior
+        if (modalCargaContainer) modalCargaContainer.style.display = 'none';
         if (modalListaUl) modalListaUl.innerHTML = '';
 
         // --- LÓGICA CONDICIONAL ---
@@ -125,8 +127,16 @@ function initModal() {
             }
 
         } else {
-            // TEMA PADRÃO (Verde + Módulos com carga horária)
+            // TEMA PADRÃO (Verde + Módulos + Carga Horária)
             
+            // 1. Carga Horária
+            const carga = card.getAttribute('data-carga');
+            if (carga) {
+                modalCargaContainer.style.display = 'block';
+                modalCargaValor.innerText = carga;
+            }
+
+            // 2. Módulos
             const modulos = card.getAttribute('data-modulos');
             if (modulos) {
                 modalListaContainer.style.display = 'block';
@@ -140,7 +150,7 @@ function initModal() {
             }
         }
 
-        // Gera o link do WhatsApp dinâmico
+        // Link do WhatsApp
         const mensagem = encodeURIComponent(`Olá! Vi no site e tenho interesse em: ${titulo}. Poderia dar-me mais informações?`);
         const telefoneDestino = "5551999869527"; 
         
@@ -150,14 +160,14 @@ function initModal() {
         modal.classList.add('active');
     });
 
-    // Função para fechar o modal
+    // Fechar Modal
     const fecharModal = () => {
         modal.classList.remove('active');
     };
 
     if (closeBtn) closeBtn.addEventListener('click', fecharModal);
 
-    // Fecha ao clicar fora do conteúdo (no fundo escuro)
+    // Fecha ao clicar no fundo escuro
     window.addEventListener('click', (e) => {
         if (e.target === modal) {
             fecharModal();
@@ -180,7 +190,7 @@ function toggleWhatsApp() {
     menu.classList.toggle('open');
     const isOpen = menu.classList.contains('open');
 
-    // Alterna ícone entre Logo e X
+    // Alterna ícones
     if (isOpen) {
         mainIcon.style.display = 'none';
         closeIcon.style.display = 'block';
