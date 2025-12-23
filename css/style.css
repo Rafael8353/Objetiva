@@ -1,6 +1,4 @@
-/* =========================================
-   1. CONFIGURAÇÕES GERAIS E VARIÁVEIS
-   ========================================= */
+/* 1. CONFIGURAÇÕES GERAIS E VARIÁVEIS */
 :root {
     /* Cores da Marca */
     --primary: #008f4c;
@@ -761,10 +759,6 @@ footer {
 .modal-container.uniritter-theme #modal-whatsapp-btn {
     background: linear-gradient(135deg, #ff4b4b 0%, #b30000 100%);
 }
-.modal-container.uniritter-theme .modal-info-workload {
-    background: #fff0f0;
-    color: #b30000;
-}
 
 .modal-actions {
     display: flex;
@@ -820,19 +814,26 @@ footer {
     .section-padding { padding: 40px 0; } 
     .card-body { padding: 15px; } 
 
-    /* Ajustes Splide */
+    /* --- IMAGEM DO CARROSSEL MOBILE --- 
+       Lógica: Altura automática, Largura 100% (sem cortes). */
+    .card-img-top {
+        height: auto; 
+        padding: 0;
+        background-color: transparent;
+        display: block; 
+    }
+
+    .card-img-top img {
+        width: 100%;       
+        height: auto;      
+        object-fit: contain; 
+        display: block;
+    }
+
     .splide { padding: 0; }
     .splide__arrow { width: 2.5rem; height: 2.5rem; }
     .splide__arrow--prev { left: 5px; }
     .splide__arrow--next { right: 5px; }
-
-    /* Ajuste de Imagem no Mobile (Evita ficar gigante) */
-    .card-img-top img {
-        width: 100%;
-        height: auto;
-        max-height: 200px; /* Trava a altura para não estourar */
-        object-fit: contain; /* Garante que a imagem apareça toda */
-    }
 
     .btn-outline { margin: 10px 5px; }
     

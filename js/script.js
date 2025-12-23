@@ -7,19 +7,19 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // --- MENU MOBILE ---
     const btnMobile = document.getElementById('mobile-btn');
-    const navMenu = document.querySelector('.desktop-menu');
+    const menuLista = document.getElementById('menu-lista'); // O UL que deve receber a classe active
 
-    if (btnMobile && navMenu) {
+    if (btnMobile && menuLista) {
         // Alternar menu ao clicar no botão
         btnMobile.addEventListener('click', function() {
-            navMenu.classList.toggle('active');
+            menuLista.classList.toggle('active');
         });
 
         // Fechar menu ao clicar em qualquer link
-        const links = navMenu.querySelectorAll('a');
+        const links = menuLista.querySelectorAll('a');
         links.forEach(link => {
             link.addEventListener('click', () => {
-                navMenu.classList.remove('active');
+                menuLista.classList.remove('active');
             });
         });
     }
@@ -46,7 +46,11 @@ document.addEventListener('DOMContentLoaded', function() {
                     768: {
                         perPage: 1, // 1 card em Celulares
                         gap: '15px',
-                        padding: '0' // Importante: 0 padding para focar no card inteiro
+                        // O TRUQUE PARA IMAGEM NÃO FICAR GIGANTE:
+                        // Adicionamos 'padding' lateral. Isso diminui a largura útil do card.
+                        // Como a imagem tem largura 100%, ao diminuir a largura, a altura diminui junto proporcionalmente.
+                        // Resultado: Imagem inteira, legível e num tamanho bom.
+                        padding: '1.5rem' 
                     }
                 }
             }).mount();
@@ -95,7 +99,8 @@ function initModal() {
         
         // Extrai dados básicos
         const titulo = card.querySelector('h3').innerText;
-        const descricao = card.querySelector('p').innerText;
+        // Tenta pegar descrição do atributo data (se existir) ou do parágrafo
+        const descricao = card.getAttribute('data-descricao') || card.querySelector('p').innerText;
         const tipo = card.getAttribute('data-modal-type'); // 'padrao' ou 'uniritter'
 
         // Preenche Básico

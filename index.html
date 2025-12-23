@@ -16,21 +16,19 @@
     <!-- CSS DO SPLIDE -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide.min.css">
     
+    <!-- CSS PERSONALIZADO -->
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 
-    <!-- Cabeçalho e Navegação -->
+    <!-- Cabeçalho -->
     <header class="main-header">
         <div class="container">
-            <!-- LOGO CLICÁVEL -->
             <a href="#home" class="logo-link">
-                <!-- Imagem do Logo alterada para Logo.png (Primeira letra maiúscula) -->
-                <img src="img/Logo.png" alt="Logo Objetiva" class="logo-img">
+                <img src="img/logo.png" alt="Logo Objetiva" class="logo-img">
                 <span class="logo">Objetiva Grupo de Ensino</span>
             </a>
             
-            <!-- Botão do menu mobile -->
             <button id="mobile-btn" class="menu-icon">&#9776;</button>
 
             <nav class="desktop-menu">
@@ -48,17 +46,15 @@
         </div>
     </header>
 
-    <!-- Seção Hero -->
+    <!-- Hero -->
     <section id="home" class="hero">
         <div class="overlay"></div>
-        
         <div class="container hero-container">
             <div class="hero-content">
                 <div class="hero-text">
                     <h1>Transformando vidas através da educação</h1>
                     <p>Sua jornada profissional começa aqui. Cursos práticos e projetos reais.</p>
                 </div>
-                
                 <div class="hero-image">
                     <img src="img/Banner.png" alt="Banner Principal" class="hero-banner-img">
                 </div>
@@ -66,41 +62,29 @@
         </div>
     </section>
 
-    <!-- Seção de Localização -->
+    <!-- Localização -->
     <section id="localizacao" class="section-padding">
         <div class="container">
             <h2 class="section-title">Nossas Escolas</h2>
             <p style="text-align: center; margin-bottom: 40px;">Encontre a Objetiva mais perto de você!</p>
             
             <div class="mapas-grid">
-                <!-- Unidade Charqueadas -->
                 <div class="mapa-item">
-                    <!-- Título alterado para apenas "Charqueadas" -->
                     <h3>Charqueadas</h3>
                     <p>📍 Av. Getúlio Vargas, 166 - Centro</p>
                     <p>📞 <a href="tel:+5551999257290" class="tel-link">(51) 99925-7290</a></p>
-                    
                     <div class="mapa-frame">
-                        <iframe 
-                            src="https://maps.google.com/maps?q=Av.+Getulio+Vargas,+166+-+Centro,+Charqueadas+-+RS&t=&z=15&ie=UTF8&iwloc=&output=embed" 
-                            width="100%" height="300" style="border:0;" allowfullscreen="" loading="lazy">
-                        </iframe>
+                        <iframe src="https://maps.google.com/maps?q=Av.+Getulio+Vargas,+166+-+Centro,+Charqueadas+-+RS&t=&z=15&ie=UTF8&iwloc=&output=embed" width="100%" height="300" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
                     </div>
                     <a href="https://maps.app.goo.gl/16a1H9NpUNKi3YZ5A" target="_blank" class="btn-rota">Como Chegar</a>
                 </div>
 
-                <!-- Unidade Arroio dos Ratos -->
                 <div class="mapa-item">
-                    <!-- Título alterado para apenas "Arroio dos Ratos" -->
                     <h3>Arroio dos Ratos</h3>
                     <p>📍 Av. Espanha, 327 - Centro</p>
                     <p>📞 <a href="tel:+5551980402554" class="tel-link">(51) 98040-2554</a></p>
-                    
                     <div class="mapa-frame">
-                        <iframe 
-                            src="https://maps.google.com/maps?q=Av.+Espanha,+327+-+Centro,+Arroio+dos+Ratos+-+RS&t=&z=15&ie=UTF8&iwloc=&output=embed" 
-                            width="100%" height="300" style="border:0;" allowfullscreen="" loading="lazy">
-                        </iframe>
+                        <iframe src="https://maps.google.com/maps?q=Av.+Espanha,+327+-+Centro,+Arroio+dos+Ratos+-+RS&t=&z=15&ie=UTF8&iwloc=&output=embed" width="100%" height="300" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
                     </div>
                     <a href="https://maps.app.goo.gl/KvynjWrDGF6Skz4M8" target="_blank" class="btn-rota">Como Chegar</a>
                 </div>
@@ -108,7 +92,7 @@
         </div>
     </section>
 
-    <!-- Seção de Cursos (ATUALIZADA: Módulos com carga horária individual) -->
+    <!-- Cursos Disponíveis -->
     <section id="cursos" class="section-padding section-bg">
         <div class="container">
             <h2 class="section-title">Cursos Disponíveis</h2>
@@ -116,15 +100,13 @@
             <div class="splide" aria-label="Lista de Cursos">
                 <div class="splide__track">
                     <ul class="splide__list">
-                        
-                        <!-- 1. Administração e Liderança -->
+                        <!-- Administração -->
                         <li class="splide__slide">
                             <div class="card-curso" 
                                  data-modal-type="padrao" 
-                                 data-modulos="Gestão de Pessoas - 16h, Liderança - 16h, Contabilidade Básica - 14h, Rotinas Administrativas - 14h, Matemática Financeira - 12h">
-                                <div class="card-img-top">
-                                    <img src="img/Administração.png" alt="Administração e Liderança">
-                                </div>
+                                 data-carga="100 Horas"
+                                 data-modulos="Liderança Eficaz, Gestão de RH, Marketing Pessoal, Gestão Administrativa, Excel">
+                                <div class="card-img-top"><img src="img/Administração.png" alt="Administração e Liderança"></div>
                                 <div class="card-body">
                                     <h3>Administração e Liderança</h3>
                                     <p>Gestão de equipes e negócios.</p>
@@ -133,113 +115,104 @@
                             </div>
                         </li>
 
-                        <!-- 2. Assistente Comercial -->
+                        <!-- Assistente -->
                         <li class="splide__slide">
-                            <div class="card-curso"
+                            <div class="card-curso" 
                                  data-modal-type="padrao" 
-                                 data-modulos="Técnicas de Vendas - 12h, Atendimento ao Cliente - 12h, Marketing Pessoal - 12h, Operador de Caixa - 12h, Estoque - 12h">
-                                <div class="card-img-top">
-                                    <img src="img/Assistente.png" alt="Assistente Comercial">
-                                </div>
+                                 data-carga="100 Horas"
+                                 data-modulos="Atendente de Farmácia, Telemarketing, Operador de Caixa, Vendas, Canva, Excel, IA para negócios">
+                                <div class="card-img-top"><img src="img/Assistente.png" alt="Assistente Comercial"></div>
                                 <div class="card-body">
                                     <h3>Assistente Comercial</h3>
-                                    <p>Atendimento ao cliente, vendas e rotinas administrativas.</p>
+                                    <p>Atendimento ao cliente e vendas.</p>
                                     <a href="#" class="btn-link btn-abrir-modal">Tenho Interesse →</a>
                                 </div>
                             </div>
                         </li>
 
-                        <!-- 3. Design Gráfico -->
+                        <!-- Design -->
                         <li class="splide__slide">
-                            <div class="card-curso"
+                            <div class="card-curso" 
                                  data-modal-type="padrao" 
-                                 data-modulos="CorelDRAW - 20h, Photoshop - 20h, Canva - 10h, Teoria das Cores - 10h, Criação de Logotipos - 10h, Social Media - 10h">
-                                <div class="card-img-top">
-                                    <img src="img/Design.png" alt="Design Gráfico">
-                                </div>
+                                 data-carga="100 Horas"
+                                 data-modulos="IA para negócios, Meta Business, Marketing Digital, Corel Draw, Canva">
+                                <div class="card-img-top"><img src="img/Design.png" alt="Design Gráfico"></div>
                                 <div class="card-body">
                                     <h3>Design Gráfico</h3>
-                                    <p>Criação de artes, marketing e redes sociais.</p>
+                                    <p>Criação de artes e marketing.</p>
                                     <a href="#" class="btn-link btn-abrir-modal">Tenho Interesse →</a>
                                 </div>
                             </div>
                         </li>
 
-                        <!-- 4. EJA Online -->
+                        <!-- EJA (ATUALIZADO) -->
                         <li class="splide__slide">
-                            <div class="card-curso"
+                            <div class="card-curso" 
                                  data-modal-type="padrao" 
-                                 data-modulos="Ensino Fundamental Completo, Ensino Médio Completo, Suporte Pedagógico, Provas Online">
-                                <div class="card-img-top">
-                                    <img src="img/Eja.png" alt="EJA Online">
-                                </div>
+                                 data-descricao="Conclua seus estudos do Ensino Fundamental e Médio de forma rápida, segura e 100% online. Nossa metodologia EJA permite que você estude no seu tempo, com suporte total de professores e certificado válido em todo território nacional. Garanta melhores oportunidades de emprego e ingresse na faculdade!">
+                                <div class="card-img-top"><img src="img/Eja.png" alt="EJA Online"></div>
                                 <div class="card-body">
                                     <h3>EJA Online</h3>
-                                    <p>Educação de Jovens e Adultos - Conclua seus estudos.</p>
+                                    <p>Conclua seus estudos rapidamente.</p>
                                     <a href="#" class="btn-link btn-abrir-modal">Tenho Interesse →</a>
                                 </div>
                             </div>
                         </li>
 
-                        <!-- 5. Formações Personalizadas -->
+                        <!-- Formações Personalizadas -->
                         <li class="splide__slide">
-                            <div class="card-curso"
+                            <div class="card-curso" 
                                  data-modal-type="padrao" 
-                                 data-modulos="Consultoria para Empresas, Treinamentos Específicos, Aulas Particulares, Mentoria VIP">
-                                <div class="card-img-top">
-                                    <img src="img/Personalizadas.png" alt="Formações Personalizadas">
-                                </div>
+                                 data-descricao="Acreditamos que cada aluno possui objetivos e ritmos únicos. Por isso, nesta modalidade, o currículo é desenhado exclusivamente para você. Após uma análise detalhada das suas necessidades, criamos uma trilha de aprendizagem personalizada, focando exatamente nas competências que você precisa desenvolver, otimizando seu tempo e potencializando seus resultados.">
+                                <div class="card-img-top"><img src="img/Personalizadas.png" alt="Formações Personalizadas"></div>
                                 <div class="card-body">
                                     <h3>Formações Personalizadas</h3>
-                                    <p>Cursos sob medida para sua empresa ou necessidade.</p>
+                                    <p>Cursos sob medida para você.</p>
                                     <a href="#" class="btn-link btn-abrir-modal">Tenho Interesse →</a>
                                 </div>
                             </div>
                         </li>
 
-                        <!-- 6. Informática e IA -->
+                        <!-- Informática -->
                         <li class="splide__slide">
-                            <div class="card-curso"
+                            <div class="card-curso" 
                                  data-modal-type="padrao" 
-                                 data-modulos="Windows 11 - 16h, Word - 16h, Excel - 16h, PowerPoint - 16h, Internet - 16h, Digitação - 8h, Ferramentas de IA - 8h">
-                                <div class="card-img-top">
-                                    <img src="img/Informatica.png" alt="Informática e IA">
-                                </div>
+                                 data-carga="100 Horas"
+                                 data-modulos="Word, Excel, Powerpoint, IA para negócios">
+                                <div class="card-img-top"><img src="img/Informatica.png" alt="Informática e IA"></div>
                                 <div class="card-body">
                                     <h3>Informática e IA</h3>
-                                    <p>Domine as ferramentas digitais e inteligência artificial.</p>
+                                    <p>Ferramentas digitais e inteligência artificial.</p>
                                     <a href="#" class="btn-link btn-abrir-modal">Tenho Interesse →</a>
                                 </div>
                             </div>
                         </li>
 
-                        <!-- 7. Informática Kids -->
+                        <!-- Kids (ATUALIZADO) -->
                         <li class="splide__slide">
-                            <div class="card-curso"
+                            <div class="card-curso" 
                                  data-modal-type="padrao" 
-                                 data-modulos="Introdução ao Computador - 8h, Paint - 8h, Word Básico - 8h, PowerPoint Básico - 8h, Internet Segura - 8h, Jogos Educativos - 8h">
-                                <div class="card-img-top">
-                                    <img src="img/Kids.png" alt="Kids">
-                                </div>
+                                 data-carga="100 Horas"
+                                 data-modulos="Segurança Digital, Windows, Word, Powerpoint, Desenvolvedor de Games">
+                                <div class="card-img-top"><img src="img/Kids.png" alt="Informática Kids"></div>
                                 <div class="card-body">
-                                    <h3>Informática Kids</h3>
-                                    <p>Introdução à informática para crianças.</p>
+                                    <h3>Informática Kids e Games</h3>
+                                    <p>Introdução à informática e jogos para crianças.</p>
                                     <a href="#" class="btn-link btn-abrir-modal">Tenho Interesse →</a>
                                 </div>
                             </div>
                         </li>
 
-                        <!-- 8. Pacote Office -->
+                        <!-- Office -->
                         <li class="splide__slide">
-                            <div class="card-curso"
+                            <div class="card-curso" 
                                  data-modal-type="padrao" 
-                                 data-modulos="Microsoft Word Avançado - 15h, Microsoft Excel Avançado - 20h, Microsoft PowerPoint - 15h, Outlook - 10h">
-                                <div class="card-img-top">
-                                    <img src="img/Office.png" alt="Pacote Office">
-                                </div>
+                                 data-carga="100 Horas"
+                                 data-modulos="Word, Excel, Powerpoint">
+                                <div class="card-img-top"><img src="img/Office.png" alt="Pacote Office"></div>
                                 <div class="card-body">
                                     <h3>Pacote Office</h3>
-                                    <p>Domine Word, Excel, PowerPoint e mais.</p>
+                                    <p>Domine o pacote Microsoft Office.</p>
                                     <a href="#" class="btn-link btn-abrir-modal">Tenho Interesse →</a>
                                 </div>
                             </div>
@@ -260,7 +233,7 @@
                     <ul class="splide__list">
                         <!-- Graduação -->
                         <li class="splide__slide">
-                            <div class="card-curso" data-modal-type="uniritter" data-lista="Administração (Bacharelado), Agronegócio (Tecnólogo), Análise e Desenv. de Sistemas (Tecnólogo), Big Data e Inteligência (Tecnólogo), Ciência da Computação (Bacharelado), Ciências Contábeis (Bacharelado), Ciências Econômicas (Bacharelado), Comércio Exterior (Tecnólogo), Design de Animação (Bacharelado), Design de Games (Bacharelado), Design de Interiores (Tecnólogo), Design de Moda (Tecnólogo), Design Gráfico (Tecnólogo), Eventos (Tecnólogo), Gastronomia (Tecnólogo), Gestão Comercial (Tecnólogo), Gestão de Qualidade (Tecnólogo), Gestão de Recursos Humanos (Tecnólogo), Gestão Financeira (Tecnólogo), Gestão Pública (Tecnólogo), Inteligência Artificial (Tecnólogo), Jogos Digitais (Tecnólogo), Logística (Tecnólogo), Marketing (Tecnólogo), Mediação (Tecnólogo), Negócios Imobiliários (Tecnólogo), Processos Gerenciais (Tecnólogo), Produção Multimídia (Tecnólogo), Redes de Computadores (Tecnólogo), Relações Internacionais (Bacharelado), Relações Públicas (Bacharelado), Segurança da Informação (Tecnólogo), Segurança no Trânsito (Tecnólogo), Segurança Privada (Tecnólogo), Segurança Pública (Tecnólogo), Serviços Notariais e Registrais (Tecnólogo), Serviços Judiciais (Tecnólogo), Serviços Penais (Tecnólogo), Sistemas de Informação (Bacharelado), Sistemas para Internet (Tecnólogo), Tecnologia da Informação (Tecnólogo), Turismo (Tecnólogo)">
+                            <div class="card-curso" data-modal-type="uniritter" data-lista="Administração (Bacharelado), Agronegócio (Tecnólogo), Análise e desenvolvimento de sistemas (Tecnólogo), Big data e inteligência (Tecnólogo), Ciência da computação (Bacharelado), Ciências contábeis (Bacharelado), Ciências econômicas (Bacharelado), Comércio exterior (Tecnólogo), Design de animação (Bacharelado), Design de games (Bacharelado), Design de interiores (Tecnólogo), Design de moda (Tecnólogo), Design gráfico (Tecnólogo), Eventos (Tecnólogo), Gastronomia (Tecnólogo), Gestão comercial (Tecnólogo), Gestão de qualidade (Tecnólogo), Gestão de recursos humanos (Tecnólogo), Gestão financeira (Tecnólogo), Gestão pública (Tecnólogo), Inteligência artificial (Tecnólogo), Jogos digitais (Tecnólogo), Logística (Tecnólogo), Marketing (Tecnólogo), Mediação (Tecnólogo), Negócios imobiliários (Tecnólogo), Processos gerenciais (Tecnólogo), Produção multimídia (Tecnólogo), Redes de computadores (Tecnólogo), Relações internacionais (Bacharelado), Relações públicas (Bacharelado), Segurança da informação (Tecnólogo), Segurança no trânsito (Tecnólogo), Segurança privada (Tecnólogo), Segurança pública (Tecnólogo), Serviços notoriais e registrais (Tecnólogo), Serviços judiciais (Tecnólogo), Serviços penais (Tecnólogo), Sistemas de informação (Bacharelado), Sistemas para Internet (Tecnólogo), Tecnologia da informação (Tecnólogo), Turismo (Tecnólogo)">
                                 <div class="card-img-top"><img src="img/Graduação.png" alt="Graduação Uniritter"></div>
                                 <div class="card-body">
                                     <h3>Graduação</h3>
@@ -305,7 +278,14 @@
                 Preencha o formulário abaixo e nossa equipe entrará em contato para verificar a disponibilidade de bolsas para o seu perfil.
             </p>
             <div style="max-width: 600px; margin: 0 auto;">
-                <form class="form-contato" action="enviar.php" method="POST">
+                <form class="form-contato" action="https://formspree.io/f/xdanppyj" method="POST">
+                    
+                    <!-- Configurações Formspree -->
+                    <input type="hidden" name="_next" value="https://www.objetivagrupodeensino.com.br/success.html">
+                    <input type="hidden" name="_subject" value="Nova Solicitação de Bolsa - Site Objetiva">
+                    <input type="hidden" name="_template" value="table">
+                    <input type="text" name="_gotcha" style="display:none">
+
                     <h3 style="margin-bottom: 20px; color: var(--primary); text-align: center;">Solicitar Bolsa</h3>
                     <input type="text" name="nome" placeholder="Nome do Aluno" required>
                     <input type="email" name="email" placeholder="Seu Melhor E-mail" required>
