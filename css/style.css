@@ -1,4 +1,6 @@
-/* 1. CONFIGURAÇÕES GERAIS E VARIÁVEIS */
+/* =========================================
+   1. CONFIGURAÇÕES GERAIS E VARIÁVEIS
+   ========================================= */
 :root {
     /* Cores da Marca */
     --primary: #008f4c;
@@ -172,7 +174,6 @@ a {
 .hero {
     min-height: 60vh; 
     height: auto;
-    background: url('../img/banner.jpg') no-repeat center center/cover;
     position: relative;
     display: flex; 
     align-items: center; 
@@ -779,6 +780,7 @@ footer {
 }
 #modal-whatsapp-btn:hover { filter: brightness(0.95); transform: translateY(-2px); }
 
+
 /* =========================================
    10. RESPONSIVIDADE (MOBILE)
    ========================================= */
@@ -837,6 +839,7 @@ footer {
 
     .btn-outline { margin: 10px 5px; }
     
+    /* Layouts de Grid */
     .contato-grid, 
     #contato .contato-grid, 
     #bolsas .contato-grid { 

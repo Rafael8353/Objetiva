@@ -21,14 +21,16 @@
 </head>
 <body>
 
-    <!-- Cabeçalho -->
+    <!-- Cabeçalho e Navegação -->
     <header class="main-header">
         <div class="container">
+            <!-- LOGO CLICÁVEL -->
             <a href="#home" class="logo-link">
-                <img src="img/logo.png" alt="Logo Objetiva" class="logo-img">
+                <img src="img/Logo.png" alt="Logo Objetiva" class="logo-img">
                 <span class="logo">Objetiva Grupo de Ensino</span>
             </a>
             
+            <!-- Botão do menu mobile -->
             <button id="mobile-btn" class="menu-icon">&#9776;</button>
 
             <nav class="desktop-menu">
@@ -46,15 +48,17 @@
         </div>
     </header>
 
-    <!-- Hero -->
+    <!-- Seção Hero -->
     <section id="home" class="hero">
         <div class="overlay"></div>
+        
         <div class="container hero-container">
             <div class="hero-content">
                 <div class="hero-text">
                     <h1>Transformando vidas através da educação</h1>
                     <p>Sua jornada profissional começa aqui. Cursos práticos e projetos reais.</p>
                 </div>
+                
                 <div class="hero-image">
                     <img src="img/Banner.png" alt="Banner Principal" class="hero-banner-img">
                 </div>
@@ -62,29 +66,39 @@
         </div>
     </section>
 
-    <!-- Localização -->
+    <!-- Seção de Localização -->
     <section id="localizacao" class="section-padding">
         <div class="container">
             <h2 class="section-title">Nossas Escolas</h2>
             <p style="text-align: center; margin-bottom: 40px;">Encontre a Objetiva mais perto de você!</p>
             
             <div class="mapas-grid">
+                <!-- Unidade Charqueadas -->
                 <div class="mapa-item">
                     <h3>Charqueadas</h3>
                     <p>📍 Av. Getúlio Vargas, 166 - Centro</p>
                     <p>📞 <a href="tel:+5551999257290" class="tel-link">(51) 99925-7290</a></p>
+                    
                     <div class="mapa-frame">
-                        <iframe src="https://maps.google.com/maps?q=Av.+Getulio+Vargas,+166+-+Centro,+Charqueadas+-+RS&t=&z=15&ie=UTF8&iwloc=&output=embed" width="100%" height="300" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                        <iframe 
+                            src="https://maps.google.com/maps?q=Av.+Getulio+Vargas,+166+-+Centro,+Charqueadas+-+RS&t=&z=15&ie=UTF8&iwloc=&output=embed" 
+                            width="100%" height="300" style="border:0;" allowfullscreen="" loading="lazy">
+                        </iframe>
                     </div>
                     <a href="https://maps.app.goo.gl/16a1H9NpUNKi3YZ5A" target="_blank" class="btn-rota">Como Chegar</a>
                 </div>
 
+                <!-- Unidade Arroio dos Ratos -->
                 <div class="mapa-item">
                     <h3>Arroio dos Ratos</h3>
                     <p>📍 Av. Espanha, 327 - Centro</p>
                     <p>📞 <a href="tel:+5551980402554" class="tel-link">(51) 98040-2554</a></p>
+                    
                     <div class="mapa-frame">
-                        <iframe src="https://maps.google.com/maps?q=Av.+Espanha,+327+-+Centro,+Arroio+dos+Ratos+-+RS&t=&z=15&ie=UTF8&iwloc=&output=embed" width="100%" height="300" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                        <iframe 
+                            src="https://maps.google.com/maps?q=Av.+Espanha,+327+-+Centro,+Arroio+dos+Ratos+-+RS&t=&z=15&ie=UTF8&iwloc=&output=embed" 
+                            width="100%" height="300" style="border:0;" allowfullscreen="" loading="lazy">
+                        </iframe>
                     </div>
                     <a href="https://maps.app.goo.gl/KvynjWrDGF6Skz4M8" target="_blank" class="btn-rota">Como Chegar</a>
                 </div>
@@ -92,7 +106,7 @@
         </div>
     </section>
 
-    <!-- Cursos Disponíveis -->
+    <!-- Seção de Cursos (ESTRUTURA SPLIDE INTEGRADA) -->
     <section id="cursos" class="section-padding section-bg">
         <div class="container">
             <h2 class="section-title">Cursos Disponíveis</h2>
@@ -100,13 +114,16 @@
             <div class="splide" aria-label="Lista de Cursos">
                 <div class="splide__track">
                     <ul class="splide__list">
-                        <!-- Administração -->
+                        
+                        <!-- 1. Administração e Liderança -->
                         <li class="splide__slide">
                             <div class="card-curso" 
                                  data-modal-type="padrao" 
                                  data-carga="100 Horas"
                                  data-modulos="Liderança Eficaz, Gestão de RH, Marketing Pessoal, Gestão Administrativa, Excel">
-                                <div class="card-img-top"><img src="img/Administração.png" alt="Administração e Liderança"></div>
+                                <div class="card-img-top">
+                                    <img src="img/Administração.png" alt="Administração e Liderança">
+                                </div>
                                 <div class="card-body">
                                     <h3>Administração e Liderança</h3>
                                     <p>Gestão de equipes e negócios.</p>
@@ -115,13 +132,15 @@
                             </div>
                         </li>
 
-                        <!-- Assistente -->
+                        <!-- 2. Assistente Comercial -->
                         <li class="splide__slide">
-                            <div class="card-curso" 
+                            <div class="card-curso"
                                  data-modal-type="padrao" 
                                  data-carga="100 Horas"
                                  data-modulos="Atendente de Farmácia, Telemarketing, Operador de Caixa, Vendas, Canva, Excel, IA para negócios">
-                                <div class="card-img-top"><img src="img/Assistente.png" alt="Assistente Comercial"></div>
+                                <div class="card-img-top">
+                                    <img src="img/Assistente.png" alt="Assistente Comercial">
+                                </div>
                                 <div class="card-body">
                                     <h3>Assistente Comercial</h3>
                                     <p>Atendimento ao cliente e vendas.</p>
@@ -130,27 +149,33 @@
                             </div>
                         </li>
 
-                        <!-- Design -->
+                        <!-- 3. Design Gráfico -->
                         <li class="splide__slide">
-                            <div class="card-curso" 
+                            <div class="card-curso"
                                  data-modal-type="padrao" 
                                  data-carga="100 Horas"
                                  data-modulos="IA para negócios, Meta Business, Marketing Digital, Corel Draw, Canva">
-                                <div class="card-img-top"><img src="img/Design.png" alt="Design Gráfico"></div>
+                                <div class="card-img-top">
+                                    <img src="img/Design.png" alt="Design Gráfico">
+                                </div>
                                 <div class="card-body">
                                     <h3>Design Gráfico</h3>
-                                    <p>Criação de artes e marketing.</p>
+                                    <p>Criação de artes, marketing e redes sociais.</p>
                                     <a href="#" class="btn-link btn-abrir-modal">Tenho Interesse →</a>
                                 </div>
                             </div>
                         </li>
 
-                        <!-- EJA (ATUALIZADO) -->
+                        <!-- 4. EJA Online -->
                         <li class="splide__slide">
-                            <div class="card-curso" 
+                            <div class="card-curso"
                                  data-modal-type="padrao" 
-                                 data-descricao="Conclua seus estudos do Ensino Fundamental e Médio de forma rápida, segura e 100% online. Nossa metodologia EJA permite que você estude no seu tempo, com suporte total de professores e certificado válido em todo território nacional. Garanta melhores oportunidades de emprego e ingresse na faculdade!">
-                                <div class="card-img-top"><img src="img/Eja.png" alt="EJA Online"></div>
+                                 data-descricao="O curso EJA (Educação de Jovens e Adultos) na modalidade EAD é voltado para quem busca finalizar os estudos com flexibilidade e agilidade. O processo de aprendizagem ocorre 100% online: o aluno acessa as aulas e materiais didáticos através da plataforma digital, podendo estudar de casa ou de qualquer lugar, nos horários que preferir.
+
+As avaliações também são realizadas em ambiente virtual, eliminando a necessidade de deslocamentos frequentes. A metodologia é intensiva, permitindo a conclusão de cada etapa em poucos meses. Ao final do curso, é emitido um diploma com validade nacional e reconhecimento pelo MEC, apto para ingresso em faculdades, concursos públicos e comprovação profissional.">
+                                <div class="card-img-top">
+                                    <img src="img/Eja.png" alt="EJA Online">
+                                </div>
                                 <div class="card-body">
                                     <h3>EJA Online</h3>
                                     <p>Conclua seus estudos rapidamente.</p>
@@ -159,12 +184,14 @@
                             </div>
                         </li>
 
-                        <!-- Formações Personalizadas -->
+                        <!-- 5. Formações Personalizadas -->
                         <li class="splide__slide">
-                            <div class="card-curso" 
+                            <div class="card-curso"
                                  data-modal-type="padrao" 
                                  data-descricao="Acreditamos que cada aluno possui objetivos e ritmos únicos. Por isso, nesta modalidade, o currículo é desenhado exclusivamente para você. Após uma análise detalhada das suas necessidades, criamos uma trilha de aprendizagem personalizada, focando exatamente nas competências que você precisa desenvolver, otimizando seu tempo e potencializando seus resultados.">
-                                <div class="card-img-top"><img src="img/Personalizadas.png" alt="Formações Personalizadas"></div>
+                                <div class="card-img-top">
+                                    <img src="img/Personalizadas.png" alt="Formações Personalizadas">
+                                </div>
                                 <div class="card-body">
                                     <h3>Formações Personalizadas</h3>
                                     <p>Cursos sob medida para você.</p>
@@ -173,13 +200,15 @@
                             </div>
                         </li>
 
-                        <!-- Informática -->
+                        <!-- 6. Informática e IA -->
                         <li class="splide__slide">
-                            <div class="card-curso" 
+                            <div class="card-curso"
                                  data-modal-type="padrao" 
                                  data-carga="100 Horas"
                                  data-modulos="Word, Excel, Powerpoint, IA para negócios">
-                                <div class="card-img-top"><img src="img/Informatica.png" alt="Informática e IA"></div>
+                                <div class="card-img-top">
+                                    <img src="img/Informatica.png" alt="Informática e IA">
+                                </div>
                                 <div class="card-body">
                                     <h3>Informática e IA</h3>
                                     <p>Ferramentas digitais e inteligência artificial.</p>
@@ -188,13 +217,15 @@
                             </div>
                         </li>
 
-                        <!-- Kids (ATUALIZADO) -->
+                        <!-- 7. Informática Kids e Games -->
                         <li class="splide__slide">
-                            <div class="card-curso" 
+                            <div class="card-curso"
                                  data-modal-type="padrao" 
                                  data-carga="100 Horas"
                                  data-modulos="Segurança Digital, Windows, Word, Powerpoint, Desenvolvedor de Games">
-                                <div class="card-img-top"><img src="img/Kids.png" alt="Informática Kids"></div>
+                                <div class="card-img-top">
+                                    <img src="img/Kids.png" alt="Informática Kids">
+                                </div>
                                 <div class="card-body">
                                     <h3>Informática Kids e Games</h3>
                                     <p>Introdução à informática e jogos para crianças.</p>
@@ -203,13 +234,15 @@
                             </div>
                         </li>
 
-                        <!-- Office -->
+                        <!-- 8. Pacote Office -->
                         <li class="splide__slide">
-                            <div class="card-curso" 
+                            <div class="card-curso"
                                  data-modal-type="padrao" 
                                  data-carga="100 Horas"
                                  data-modulos="Word, Excel, Powerpoint">
-                                <div class="card-img-top"><img src="img/Office.png" alt="Pacote Office"></div>
+                                <div class="card-img-top">
+                                    <img src="img/Office.png" alt="Pacote Office">
+                                </div>
                                 <div class="card-body">
                                     <h3>Pacote Office</h3>
                                     <p>Domine o pacote Microsoft Office.</p>
@@ -224,17 +257,20 @@
         </div>
     </section>
 
-    <!-- Graduação Uniritter -->
+    <!-- NOVA SEÇÃO: UNIRITTER (Splide 2) -->
     <section id="uniritter" class="section-padding">
         <div class="container">
             <h2 class="section-title">Graduação Uniritter</h2>
+            
             <div class="splide splide-uniritter" aria-label="Cursos Uniritter">
                 <div class="splide__track">
                     <ul class="splide__list">
-                        <!-- Graduação -->
+                        <!-- Card 1 -->
                         <li class="splide__slide">
                             <div class="card-curso" data-modal-type="uniritter" data-lista="Administração (Bacharelado), Agronegócio (Tecnólogo), Análise e desenvolvimento de sistemas (Tecnólogo), Big data e inteligência (Tecnólogo), Ciência da computação (Bacharelado), Ciências contábeis (Bacharelado), Ciências econômicas (Bacharelado), Comércio exterior (Tecnólogo), Design de animação (Bacharelado), Design de games (Bacharelado), Design de interiores (Tecnólogo), Design de moda (Tecnólogo), Design gráfico (Tecnólogo), Eventos (Tecnólogo), Gastronomia (Tecnólogo), Gestão comercial (Tecnólogo), Gestão de qualidade (Tecnólogo), Gestão de recursos humanos (Tecnólogo), Gestão financeira (Tecnólogo), Gestão pública (Tecnólogo), Inteligência artificial (Tecnólogo), Jogos digitais (Tecnólogo), Logística (Tecnólogo), Marketing (Tecnólogo), Mediação (Tecnólogo), Negócios imobiliários (Tecnólogo), Processos gerenciais (Tecnólogo), Produção multimídia (Tecnólogo), Redes de computadores (Tecnólogo), Relações internacionais (Bacharelado), Relações públicas (Bacharelado), Segurança da informação (Tecnólogo), Segurança no trânsito (Tecnólogo), Segurança privada (Tecnólogo), Segurança pública (Tecnólogo), Serviços notoriais e registrais (Tecnólogo), Serviços judiciais (Tecnólogo), Serviços penais (Tecnólogo), Sistemas de informação (Bacharelado), Sistemas para Internet (Tecnólogo), Tecnologia da informação (Tecnólogo), Turismo (Tecnólogo)">
-                                <div class="card-img-top"><img src="img/Graduação.png" alt="Graduação Uniritter"></div>
+                                <div class="card-img-top">
+                                    <img src="img/Graduação.png" alt="Graduação Uniritter">
+                                </div>
                                 <div class="card-body">
                                     <h3>Graduação</h3>
                                     <p>Várias opções de cursos presenciais e EAD.</p>
@@ -242,10 +278,13 @@
                                 </div>
                             </div>
                         </li>
-                        <!-- MBA -->
+                        
+                        <!-- Card 2 -->
                         <li class="splide__slide">
                             <div class="card-curso" data-modal-type="uniritter" data-lista="MBA em Administração de Pessoal, MBA em Auditoria e Perícia Contábil, MBA em Business Intelligence Management & Analytics, MBA em Controladoria e Finanças Corporativas, MBA em Desenvolvimento e Gestão de Franquias, MBA em Empreendedorismo e Desenvolvimento de Novos Negócios, MBA em Gestão Comercial e Vendas, MBA em Gestão da Criatividade e Inovação, MBA em Gestão de Ativos Criptomoedas e Formação Traders, MBA em Gestão de Aviação Civil, MBA em Gestão Estratégica de ESG, MBA em Gestão Estratégica de Marketing, MBA em Gestão Estratégica de Negócios, MBA em Gestão Estratégica de Negócios Varejistas, MBA em Gestão Estratégica de Pessoas, MBA em Gestão Estratégica de Processos, MBA em Gestão Estratégica de Projetos, MBA em Gestão Estratégica em Finanças e Tesouraria Corporativa, MBA em Gestão Fiscal e Tributária, MBA em Gestão Pública, MBA em Governança Riscos e Compliance, MBA em Investimentos Finanças & Banking, MBA em Liderança de Alta Performance, MBA em Logística Internacional e Comércio Exterior, MBA em Marketing Analytics, MBA em Mercado Pet, MBA em Negociação e Solução de Conflitos, MBA em Negócios Digitais e E-Commerce, MBA em Negócios Internacionais, MBA em Neuromarketing e Experiência de Consumo, MBA em Psicologia Organizacional e do Trabalho e Liderança Estratégica, MBA em Supply Chain Management e Logística">
-                                <div class="card-img-top"><img src="img/MBA.png" alt="MBA Uniritter"></div>
+                                <div class="card-img-top">
+                                    <img src="img/MBA.png" alt="MBA Uniritter">
+                                </div>
                                 <div class="card-body">
                                     <h3>MBA</h3>
                                     <p>Gestão avançada para líderes e empreendedores.</p>
@@ -253,10 +292,13 @@
                                 </div>
                             </div>
                         </li>
-                        <!-- Pós -->
+
+                        <!-- Card 3 -->
                         <li class="splide__slide">
                             <div class="card-curso" data-modal-type="uniritter" data-lista="Agronegócios, Alfabetização e Letramento, Análise do Comportamento Aplicada ao Autismo e a Outras Neurodivergências, Auditoria em Saúde e Gestão da Qualidade, Autismo Neurodiversidade e Estratégias Comportamentais, Avaliação de Impactos Ambientais, Big Data e Comunicação, Branding Corporativo e Profissional, Cidades Inteligentes, Ciência de Dados, Cloud Computing Corporativo: Uma Abordagem Multiplayer, Cloud & Edge Computing, Comportamento e Tendências no Mercado de Moda, Computação Quântica, Comunicação 5.0: Inteligência Digital e Novos Ambientes Comunicacionais, Comunicação Digital e Redes Sociais, Comunicação e Marketing Esportivo, Comunicação Marcas e Consumo, Comunicação nas Organizações, Comunicação Transmídia, Cosmetologia Estética, Criação de Identidade Visual, Data Science e Informática em Saúde, Desenvolvimento de Games, Design Audiovisual, Design Gráfico em Movimento, Design para Publicação, Diagnóstico por Imagem em Pequenos Animais, Docência Aplicada à Enfermagem, Docência no Ensino Superior, Educação Bilíngue, Educação Inclusiva com Ênfase em Tecnologias Assistivas, Educação Infantil, Enfermagem do Trabalho e Saúde Ocupacional, Enfermagem em Urgência Emergência e UTI, Engenharia Clínica, Estética Avançada: Abordagem Especializada, Estética Avançada: Abordagem Integrada, Estética Avançada: Biomedicina, Estética Avançada: Farmácia, Estética Clínica: Abordagem Integrada, Estratégias de Aprendizagem, Gestão da Produção Industrial, Gestão de Comunicação Corporativa e Transparência, Gestão de Escritórios em Arquitetura e Design, Gestão de Negócios Gastronômicos, Gestão de Projetos de Sistemas Estruturais em Edificações, Gestão de Projetos de TI e Metodologias Ágeis, Gestão de Serviços de Saúde, Gestão de Turismo e Hospitalidade, Gestão e Auditoria de Sistemas da Qualidade, Gestão e Negócios em Sistemas de Energia, Gestão Escolar, Governança de TI, Hospitalidade Turismo e Novos Negócios, Implantação e Gestão BIM, Inbound Marketing (Marketing de Atração), Indústria 4.0, Inteligência Artificial, Inteligência Artificial e Ciência de Dados, Inteligência Artificial nos Negócios, Interiores: Tendências e Tecnologia, Jornalismo Contemporâneo e Digital, Jornalismo Gastronômico, Manutenção Produtiva Total, Master DevOps: Engineering & Tech Agile, Medicina e Conservação de Silvestres, Metodologias Ativas e Tecnologia, Neuroarquitetura, Neurociência Aplicada à Educação, Neuropsicologia, Neuropsicopedagogia, Operação e Manutenção de Parques Eólicos, Planejamento e Gestão de Eventos, Psicologia Positiva Bem-Estar e Felicidade, Psicopedagogia, Saúde Pública com Ênfase em Saúde da Família, Segurança da Informação, Serviço Social e Gestão de Projetos Sociais, Sistemas Elétricos de Potência, User Experience, Vitrinismo e Visual Merchandising">
-                                <div class="card-img-top"><img src="img/Pós.png" alt="Pós-Graduação Uniritter"></div>
+                                <div class="card-img-top">
+                                    <img src="img/Pós.png" alt="Pós-Graduação Uniritter">
+                                </div>
                                 <div class="card-body">
                                     <h3>Pós Graduação</h3>
                                     <p>Especialize-se em diversas áreas do conhecimento.</p>
@@ -270,49 +312,69 @@
         </div>
     </section>
 
-    <!-- Bolsas -->
+    <!-- Seção de Bolsas (LAYOUT ALTERADO: CENTRALIZADO) -->
     <section id="bolsas" class="section-padding section-bg">
         <div class="container">
             <h2 class="section-title">Bolsas de Estudos</h2>
             <p style="text-align: center; margin-bottom: 30px; max-width: 800px; margin-left: auto; margin-right: auto; line-height: 1.6;">
                 Preencha o formulário abaixo e nossa equipe entrará em contato para verificar a disponibilidade de bolsas para o seu perfil.
             </p>
+            
+            <!-- Formulário Centralizado -->
             <div style="max-width: 600px; margin: 0 auto;">
-                <form class="form-contato" action="https://formspree.io/f/xdanppyj" method="POST">
+                <!-- FORMULÁRIO COM IDs PARA O JAVASCRIPT -->
+                <!-- A action aponta para o Formspree, mas o JS vai interceptar e redirecionar -->
+                <form id="form-bolsa" class="form-contato" action="https://formspree.io/f/xdanppyj" method="POST">
                     
-                    <!-- Configurações Formspree -->
-                    <input type="hidden" name="_next" value="https://www.objetivagrupodeensino.com.br/success.html">
+                    <!-- Configurações Ocultas -->
                     <input type="hidden" name="_subject" value="Nova Solicitação de Bolsa - Site Objetiva">
                     <input type="hidden" name="_template" value="table">
                     <input type="text" name="_gotcha" style="display:none">
 
                     <h3 style="margin-bottom: 20px; color: var(--primary); text-align: center;">Solicitar Bolsa</h3>
+                    
                     <input type="text" name="nome" placeholder="Nome do Aluno" required>
                     <input type="email" name="email" placeholder="Seu Melhor E-mail" required>
                     <input type="tel" name="whatsapp" placeholder="Seu WhatsApp" required> 
+                    
                     <textarea name="interesse" placeholder="Qual curso ou assunto você tem interesse? Escreva aqui..." rows="3" style="width: 100%; padding: 15px; margin-bottom: 15px; border: 1px solid #ccc; border-radius: 5px; font-family: inherit; resize: vertical;" required></textarea>
-                    <button type="submit" class="btn-primary">Quero minha Bolsa!</button>
+                    
+                    <!-- Botão com ID para feedback visual -->
+                    <button type="submit" id="btn-enviar-bolsa" class="btn-primary">Quero minha Bolsa!</button>
                 </form>
+
+                <!-- Mensagem de erro oculta -->
+                <p id="msg-erro" style="display:none; color: red; text-align: center; margin-top: 10px;">Ocorreu um erro. Tente novamente mais tarde.</p>
             </div>
         </div>
     </section>
 
-    <!-- Contato -->
+    <!-- Seção de Contato -->
     <section id="contato" class="section-padding">
         <div class="container">
             <h2 class="section-title">Fale Conosco</h2>
+            
             <div style="text-align: center; max-width: 900px; margin: 0 auto;">
-                <p style="font-size: 1.1rem; margin-bottom: 40px;">Estamos prontos para atender você. Escolha o canal de sua preferência:</p>
+                <p style="font-size: 1.1rem; margin-bottom: 40px;">
+                    Estamos prontos para atender você. Escolha o canal de sua preferência:
+                </p>
+
                 <div class="contato-grid"> 
                     <div class="mapa-item">
                         <h3>✉️ E-mail</h3>
                         <p><a href="mailto:contato@objetiva.com.br" class="email-link">contato@objetiva.com.br</a></p>
                     </div>
+
                     <div class="mapa-item">
                         <h3>📱 Redes Sociais</h3>
+                        <p>Siga nosso dia a dia:</p>
                         <div class="social-icons">
-                            <a href="https://www.instagram.com/objetivagrupodeensino/" target="_blank"><img src="img/Instagram-logo.png" alt="Instagram"></a>
-                            <a href="https://www.facebook.com/objetivagrupodeensino/" target="_blank"><img src="img/Facebook-logo.png" alt="Facebook"></a>
+                            <a href="https://www.instagram.com/objetivagrupodeensino/" target="_blank">
+                                <img src="img/Instagram-logo.png" alt="Instagram">
+                            </a>
+                            <a href="https://www.facebook.com/objetivagrupodeensino/" target="_blank">
+                                <img src="img/Facebook-logo.png" alt="Facebook">
+                            </a>
                         </div>
                     </div>
                 </div>
@@ -320,12 +382,16 @@
         </div>
     </section>
 
-    <!-- Loja -->
+    <!-- Seção Loja -->
     <section id="objetiva" class="section-padding section-bg">
         <div class="container">
             <h2 class="section-title">Objetiva Informática</h2>
+            
             <div style="text-align: center; max-width: 800px; margin: 0 auto;">
-                <p style="margin-bottom: 30px;">Há anos no mercado formando profissionais qualificados.</p>
+                <p style="margin-bottom: 30px;">
+                    Há anos no mercado formando profissionais qualificados. Além de ensino, oferecemos produtos de informática de alta qualidade.
+                </p>
+                
                 <a href="https://www.objetivaloja.com.br/" target="_blank" class="link-loja">
                     <img src="img/Loja.png" alt="Visite nossa Loja Virtual" class="img-loja">
                     <span class="btn-loja">Acessar Loja Virtual →</span>
@@ -348,32 +414,39 @@
                 <span class="wa-label">Escola de Charqueadas</span>
                 <span class="wa-icon">&#128172;</span>
             </a>
+            
             <a href="https://wa.me/5551980402554?text=Ol%C3%A1!+Gostaria+de+saber+mais+sobre+os+cursos+na+escola+de+Arroio+dos+Ratos." target="_blank" class="wa-option">
                 <span class="wa-label">Escola de Arroio dos Ratos</span>
                 <span class="wa-icon">&#128172;</span>
             </a>
         </div>
+
         <button class="whatsapp-float" onclick="toggleWhatsApp()">
             <img src="img/Whatsapp-logo.png" alt="WhatsApp" class="whatsapp-img" id="wa-main-icon">
             <span id="wa-close-icon" style="display:none; font-size: 30px; color: white;">&times;</span>
         </button>
     </div>
 
-    <!-- Modal -->
+    <!-- Modal Flutuante -->
     <div id="modal-curso" class="modal-container">
         <div class="modal-content">
             <span class="close-modal">&times;</span>
             <h3 id="modal-titulo">Nome do Curso</h3>
-            <p id="modal-descricao">Descrição.</p>
+            <p id="modal-descricao">Descrição do curso.</p>
+            
             <div id="modal-lista-container" class="modal-course-list" style="display: none;">
                 <p><strong id="modal-lista-titulo">Conteúdo:</strong></p>
                 <ul id="modal-lista-ul"></ul>
             </div>
+
             <div id="modal-carga-container" class="modal-info-workload" style="display: none;">
                 <p><strong>Carga Horária:</strong> <span id="modal-carga-valor">--</span></p>
             </div>
+            
             <div class="modal-actions">
-                <a href="#" id="modal-whatsapp-btn" class="btn-primary" target="_blank">Falar com Consultor</a>
+                <a href="#" id="modal-whatsapp-btn" class="btn-primary" target="_blank">
+                    Falar com Consultor
+                </a>
             </div>
         </div>
     </div>
@@ -381,5 +454,6 @@
     <!-- Scripts -->
     <script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/js/splide.min.js"></script>
     <script src="js/script.js"></script>
+
 </body>
 </html>
