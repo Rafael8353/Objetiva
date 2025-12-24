@@ -4,7 +4,7 @@
 :root {
     /* Cores da Marca */
     --primary: #008f4c;
-    --primary-gradient: linear-gradient(135deg, #9cc837 0%, #008f4c 100%);
+    --primary-gradient: linear-gradient(135deg, #5fbe1d 0%, #d7df36 100%);
     --primary-dark: #00753e;
     --secondary: #e6f4ea; 
     
@@ -35,9 +35,11 @@ body {
     padding: 0; 
     color: var(--text); 
     background-color: var(--white);
-    padding-top: 70px; /* Compensação do cabeçalho fixo */
+    padding-top: 70px; 
     overflow-x: hidden;
     width: 100%;
+    font-size: 1.125rem;
+    line-height: 1.6;
 }
 
 .container { 
@@ -174,6 +176,7 @@ a {
 .hero {
     min-height: 60vh; 
     height: auto;
+    background: url('../img/banner.jpg') no-repeat center center/cover;
     position: relative;
     display: flex; 
     align-items: center; 
@@ -365,7 +368,14 @@ a {
     background-color: #fff; 
     display: block;
     border-bottom: 1px solid #f0f0f0;
+    cursor: pointer;
+    transition: opacity 0.3s;
 }
+
+.card-img-top:hover {
+    opacity: 0.9; /* Um pequeno efeito visual ao passar o mouse */
+}
+
 .card-img-top img {
     width: 100%;
     height: auto;
@@ -592,6 +602,7 @@ footer {
     opacity: 0.95;
 }
 
+/* 9. WIDGET WHATSAPP */
 .whatsapp-container {
     position: fixed;
     bottom: 30px;
@@ -701,6 +712,8 @@ footer {
     text-align: center;
     transform: translateY(-20px);
     transition: transform 0.3s ease;
+    max-height: 90vh;
+    overflow-y: auto;
 }
 
 .modal-container.active .modal-content {
@@ -780,7 +793,6 @@ footer {
 }
 #modal-whatsapp-btn:hover { filter: brightness(0.95); transform: translateY(-2px); }
 
-
 /* =========================================
    10. RESPONSIVIDADE (MOBILE)
    ========================================= */
@@ -812,6 +824,16 @@ footer {
         max-height: 200px; /* Reduzido no mobile */
     }
 
+    .modal-content {
+        padding: 25px 20px; 
+        width: 95%; 
+    }
+    
+    .close-modal {
+        top: 10px;
+        right: 15px;
+    }
+
     /* Redução de Espaçamento Geral */
     .section-padding { padding: 40px 0; } 
     .card-body { padding: 15px; } 
@@ -839,7 +861,6 @@ footer {
 
     .btn-outline { margin: 10px 5px; }
     
-    /* Layouts de Grid */
     .contato-grid, 
     #contato .contato-grid, 
     #bolsas .contato-grid { 

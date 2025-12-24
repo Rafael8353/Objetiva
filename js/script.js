@@ -7,7 +7,7 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // --- MENU MOBILE ---
     const btnMobile = document.getElementById('mobile-btn');
-    const menuLista = document.getElementById('menu-lista'); // O UL que contém os itens
+    const menuLista = document.getElementById('menu-lista');
 
     if (btnMobile && menuLista) {
         // Alternar menu ao clicar no botão
@@ -57,7 +57,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // --- INICIALIZAÇÕES ---
     initModal();
-    initFormSubmission(); // Ativa o envio do formulário via JS
+    // A função initFormSubmission() foi removida para permitir o envio padrão do Formspree.
 });
 
 /**
@@ -84,7 +84,7 @@ function initModal() {
     
     // Usamos 'Event Delegation' para capturar cliques (inclusive em clones do Splide)
     document.addEventListener('click', (e) => {
-        // Verifica se clicou num botão de abrir modal
+        // Verifica se clicou num botão OU na imagem (que agora tem a classe btn-abrir-modal)
         const btn = e.target.closest('.btn-abrir-modal');
         
         if (!btn) return; 
@@ -179,74 +179,7 @@ function initModal() {
 
 /**
  * =========================================
- * 3. ENVIO DO FORMULÁRIO (AJAX)
- * Esta função intercepta o envio e redireciona manualmente
- * =========================================
- */
-function initFormSubmission() {
-    const form = document.getElementById('form-bolsa');
-    
-    // Se não encontrar o formulário, sai da função
-    if (!form) return;
-
-    form.addEventListener('submit', function(e) {
-        e.preventDefault(); // IMPEDE o envio normal que abre o site do Formspree
-        
-        const data = new FormData(form);
-        const btn = document.getElementById('btn-enviar-bolsa');
-        const msgErro = document.getElementById('msg-erro');
-        const textoOriginal = btn.innerText;
-
-        // Feedback Visual (Carregando...)
-        btn.innerText = 'Enviando...';
-        btn.disabled = true;
-        if (msgErro) msgErro.style.display = 'none';
-
-        // Envia os dados "por baixo dos panos"
-        fetch(form.action, {
-            method: form.method,
-            body: data,
-            headers: {
-                'Accept': 'application/json'
-            }
-        }).then(response => {
-            if (response.ok) {
-                // SUCESSO: Redireciona manualmente para o arquivo local
-                window.location.href = "success.html";
-            } else {
-                // ERRO DO FORMSPREE
-                response.json().then(data => {
-                    if (Object.hasOwn(data, 'errors')) {
-                        alert(data["errors"].map(error => error["message"]).join(", "));
-                    } else {
-                        if (msgErro) {
-                            msgErro.innerText = "Ocorreu um erro ao enviar. Tente novamente.";
-                            msgErro.style.display = 'block';
-                        } else {
-                            alert('Ocorreu um erro ao enviar.');
-                        }
-                    }
-                });
-                btn.innerText = textoOriginal;
-                btn.disabled = false;
-            }
-        }).catch(error => {
-            // ERRO DE REDE
-            if (msgErro) {
-                msgErro.innerText = "Erro de conexão. Verifique sua internet.";
-                msgErro.style.display = 'block';
-            } else {
-                alert('Erro de conexão. Tente novamente.');
-            }
-            btn.innerText = textoOriginal;
-            btn.disabled = false;
-        });
-    });
-}
-
-/**
- * =========================================
- * 4. WIDGET FLUTUANTE DO WHATSAPP
+ * 3. WIDGET FLUTUANTE DO WHATSAPP
  * =========================================
  */
 function toggleWhatsApp() {
