@@ -35,10 +35,12 @@ body {
     padding: 0; 
     color: var(--text); 
     background-color: var(--white);
-    padding-top: 70px; 
+    padding-top: 70px; /* Compensação do cabeçalho fixo */
     overflow-x: hidden;
     width: 100%;
-    font-size: 1.125rem;
+    
+    /* Fonte Aumentada para Leitura Melhor */
+    font-size: 1.125rem; /* Aprox 18px */
     line-height: 1.6;
 }
 
@@ -115,7 +117,7 @@ a {
 .desktop-menu a { 
     color: var(--text); 
     font-weight: 600; 
-    font-size: 0.8rem; 
+    font-size: 0.9rem; /* Levemente aumentado */
     position: relative;
     padding: 5px 0;
 }
@@ -140,7 +142,7 @@ a {
     color: var(--white) !important; 
     padding: 10px 20px; 
     border-radius: 50px;
-    font-size: 0.8rem;
+    font-size: 0.9rem;
     font-weight: 700;
     border: none;
     box-shadow: 0 4px 10px rgba(0, 143, 76, 0.2);
@@ -223,7 +225,7 @@ a {
     text-shadow: 0 2px 10px rgba(0,0,0,0.1);
 }
 
-.hero p { font-size: 1rem; }
+.hero p { font-size: 1.1rem; }
 
 .hero-image {
     flex: 1;
@@ -317,7 +319,7 @@ a {
 
 .splide__arrow svg {
     fill: white; 
-    width: 20px;  
+    width: 20px;   
     height: 20px; 
 }
 
@@ -371,10 +373,7 @@ a {
     cursor: pointer;
     transition: opacity 0.3s;
 }
-
-.card-img-top:hover {
-    opacity: 0.9; /* Um pequeno efeito visual ao passar o mouse */
-}
+.card-img-top:hover { opacity: 0.9; }
 
 .card-img-top img {
     width: 100%;
@@ -396,9 +395,10 @@ a {
     margin-bottom: 10px;
 }
 .card-body p {
-    color: #666;
-    font-size: 0.95rem;
-    line-height: 1.6;
+    color: #333;       /* Escurecido para melhor leitura */
+    font-size: 1rem;
+    line-height: 1.5;
+    font-weight: 500;
     margin-bottom: auto; 
 }
 
@@ -408,7 +408,7 @@ a {
     display: inline-block; 
     margin-top: 20px; 
     text-transform: uppercase; 
-    font-size: 0.8rem; 
+    font-size: 0.9rem; 
     letter-spacing: 1px;
 }
 .btn-link:hover { color: var(--primary-dark); text-decoration: underline; }
@@ -562,19 +562,6 @@ a {
     display: block;
 }
 
-.btn-loja {
-    display: block;
-    padding: 15px 20px; 
-    background-color: #fff;
-    color: var(--primary);
-    font-weight: 800;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    transition: color 0.3s ease;
-    border-top: 1px solid #eee;
-}
-.link-loja:hover .btn-loja { color: var(--primary-dark); }
-
 .social-icons {
     display: flex;
     justify-content: center;
@@ -598,7 +585,7 @@ footer {
     color: var(--white); 
     padding: 60px 0; 
     text-align: center; 
-    font-size: 0.9rem;
+    font-size: 0.95rem;
     opacity: 0.95;
 }
 
@@ -712,8 +699,6 @@ footer {
     text-align: center;
     transform: translateY(-20px);
     transition: transform 0.3s ease;
-    max-height: 90vh;
-    overflow-y: auto;
 }
 
 .modal-container.active .modal-content {
@@ -729,6 +714,7 @@ footer {
     color: #aaa;
     cursor: pointer;
     transition: color 0.2s;
+    z-index: 10; /* Garante que fique acima do texto */
 }
 .close-modal:hover { color: var(--text); }
 
@@ -736,11 +722,17 @@ footer {
     color: var(--primary);
     margin-bottom: 15px;
     font-size: 1.8rem;
+    padding-top: 10px; /* Pequeno espaço para não colar no X */
 }
 
 #modal-descricao {
     margin-bottom: 20px;
     color: #666;
+    text-align: justify; /* Melhora a leitura de textos longos */
+    /* ADICIONADO: Igual ao da Uniritter */
+    max-height: 200px;
+    overflow-y: auto;
+    padding-right: 10px;
 }
 
 /* Carga Horária */
@@ -757,7 +749,7 @@ footer {
 .modal-course-list {
     text-align: left;
     margin-bottom: 20px;
-    max-height: 200px;
+    max-height: 200px; /* Limita altura interna da lista se for muito grande */
     overflow-y: auto;
     padding-right: 10px;
 }
@@ -777,6 +769,7 @@ footer {
 .modal-actions {
     display: flex;
     justify-content: center;
+    margin-top: 20px;
 }
 
 #modal-whatsapp-btn {
@@ -821,25 +814,13 @@ footer {
     .hero h1 { font-size: 2rem; }
     .hero-banner-img {
         margin: 0 auto; 
-        max-height: 200px; /* Reduzido no mobile */
-    }
-
-    .modal-content {
-        padding: 25px 20px; 
-        width: 95%; 
-    }
-    
-    .close-modal {
-        top: 10px;
-        right: 15px;
+        max-height: 200px;
     }
 
     /* Redução de Espaçamento Geral */
     .section-padding { padding: 40px 0; } 
     .card-body { padding: 15px; } 
 
-    /* --- IMAGEM DO CARROSSEL MOBILE --- 
-       Lógica: Altura automática, Largura 100% (sem cortes). */
     .card-img-top {
         height: auto; 
         padding: 0;
@@ -879,4 +860,14 @@ footer {
     .whatsapp-img { width: 30px; }
 
     .btn-destaque { margin-top: 15px; width: 80%; }
+
+    /* Ajuste do Modal para Mobile */
+    .modal-content {
+        padding: 25px 20px; /* Menos borda */
+        width: 95%; /* Ocupa mais largura */
+    }
+    .close-modal {
+        top: 10px;
+        right: 15px;
+    }
 }
