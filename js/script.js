@@ -57,7 +57,6 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // --- INICIALIZAÇÕES ---
     initModal();
-    // A função initFormSubmission() foi removida para permitir o envio padrão do Formspree.
 });
 
 /**
@@ -104,11 +103,22 @@ function initModal() {
         modalTitle.innerText = titulo;
         modalDesc.innerText = descricao;
 
+        // --- NOVO: LÓGICA PARA DIMINUIR TEXTO (EJA E PERSONALIZADAS) ---
+        // Verifica se o título contém "EJA" ou "Personalizadas"
+        if (titulo.includes('EJA') || titulo.includes('Personalizadas')) {
+            modalDesc.classList.add('descricao-reduzida');
+        } else {
+            modalDesc.classList.remove('descricao-reduzida');
+        }
+
         // RESET: Limpa estados anteriores
         modalContainer.classList.remove('uniritter-theme');
         if (modalListaContainer) modalListaContainer.style.display = 'none';
         if (modalCargaContainer) modalCargaContainer.style.display = 'none';
         if (modalListaUl) modalListaUl.innerHTML = '';
+        
+        // Garante que o título da lista esteja visível por padrão (para desfazer o do IFSUL)
+        if (modalListaTitulo) modalListaTitulo.style.display = 'block';
 
         // --- LÓGICA CONDICIONAL ---
         
@@ -142,7 +152,16 @@ function initModal() {
             const modulos = card.getAttribute('data-modulos');
             if (modulos) {
                 modalListaContainer.style.display = 'block';
-                modalListaTitulo.innerText = "Módulos do Curso:";
+                
+                // --- NOVO: LÓGICA ESPECÍFICA DO IFSUL ---
+                if (titulo.includes('IFSUL')) {
+                    // Se for IFSUL, esconde o título "Módulos do Curso"
+                    modalListaTitulo.style.display = 'none';
+                } else {
+                    // Para os outros, mostra normal
+                    modalListaTitulo.style.display = 'block';
+                    modalListaTitulo.innerText = "Módulos do Curso:";
+                }
                 
                 modulos.split(',').forEach(item => {
                     const li = document.createElement('li');
