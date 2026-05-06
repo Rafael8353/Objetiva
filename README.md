@@ -1,64 +1,43 @@
-# 🎓 Objetiva Grupo de Ensino - Website Institucional
+# 🎓 Sistema de Gestão Dinâmica de Cursos
 
-Este repositório contém o código-fonte do website institucional da **Objetiva Grupo de Ensino**, uma escola focada em cursos profissionalizantes, informática e idiomas, com unidades em Charqueadas e Arroio dos Ratos (RS).
+Um sistema web completo desenvolvido para exibição dinâmica de cursos, captação de leads (bolsas de estudo) e um painel administrativo customizado para gerenciamento de conteúdo.
 
-O projeto é uma **Landing Page** responsiva, otimizada para conversão de leads e divulgação da grade curricular.
+## 🚀 Visão Geral do Projeto
 
-O Site está atualmente no ar no link: https://objetivagrupodeensino.com.br/
+Este projeto transformou um site institucional estático criado por mim em uma plataforma dinâmica. Um site de uma Loja/Grupo de Ensino também agora funciona com um sistema que permite que administradores gerenciem o catálogo de cursos (adicionando, editando e excluindo) através de um painel seguro, refletindo as mudanças em tempo real na vitrine do site sem a necessidade de alterar o código HTML.
 
-## 🖥️ Visualização do Projeto
+## ✨ Funcionalidades
 
-O site apresenta:
-* **Home:** Banner principal e proposta de valor.
-* **Localização:** Mapas interativos das duas unidades.
-* **Cursos:** Carrossel interativo com listagem de cursos profissionalizantes e Uniritter.
-* **Bolsas:** Formulário de captação de leads integrado.
-* **Contato:** Links para redes sociais e widget de WhatsApp.
+### Frontend (Vitrine do Site)
+* **Carrosséis Dinâmicos:** Exibição de cursos separados por categorias (Padrão e Uniritter) utilizando a biblioteca Splide.js.
+* **Modais Interativos:** Ao clicar em um curso, um modal detalhado é aberto com informações extras, carga horária e lista de módulos.
+* **Integração com WhatsApp:** Botões de conversão que redirecionam o aluno diretamente para o WhatsApp da instituição com uma mensagem pré-configurada sobre o curso de interesse.
+* **Captação de Leads:** Formulário de solicitação de bolsas integrado com envio de e-mails via SMTP autêntico.
 
-## 🚀 Tecnologias Utilizadas
+### Backend (Painel Administrativo)
+* **Autenticação:** Área restrita protegida por login e senha.
+* **CRUD Completo:** Sistema para Cadastrar, Ler, Atualizar e Excluir cursos diretamente no banco de dados.
+* **Upload de Mídia:** Gerenciador de upload de imagens (capas dos cursos) integrado.
+* **API RESTful Simples:** Endpoint (`api-cursos.php`) que fornece os dados dos cursos em formato JSON para consumo assíncrono (Fetch API) pelo frontend.
+* **Setup Automatizado:** O script PHP verifica e cria automaticamente a tabela `cursos` no banco de dados no primeiro acesso, facilitando a migração de servidor.
 
-* **HTML5 Semântico:** Estrutura limpa e organizada.
-* **CSS3 Moderno:** Uso de *CSS Variables* (`:root`), Flexbox e CSS Grid. Design totalmente responsivo (Mobile-First).
-* **JavaScript (Vanilla):** Lógica para menu mobile, modais dinâmicos e manipulação do DOM.
-* **[Splide.js](https://splidejs.com/):** Biblioteca leve para criação dos carrosséis (sliders) de cursos.
-* **[Formspree](https://formspree.io/):** Backend-as-a-service para processamento do formulário de contato/bolsas.
-* **Google Fonts:** Tipografia *Montserrat*.
+## 🛠️ Tecnologias Utilizadas
 
-## ✨ Funcionalidades Principais
+* **Frontend:** HTML5, CSS3, JavaScript (Vanilla)
+* **Backend:** PHP (Vanilla)
+* **Banco de Dados:** MySQL / PDO (PHP Data Objects)
+* **Envio de E-mails:** [PHPMailer](https://github.com/PHPMailer/PHPMailer) (Envio via SMTP SSL/TLS)
+* **Componentes UI:** [Splide.js](https://splidejs.com/) (Carrosséis)
 
-1.  **Carrossel de Cursos:**
-    * Utiliza a biblioteca *Splide.js*.
-    * Adaptável: Exibe 3 cards no desktop, 2 no tablet e 1 no mobile.
-
-2.  **Sistema de Modal Dinâmico:**
-    * Ao clicar em um curso (botão ou imagem), um modal flutuante se abre.
-    * O conteúdo do modal é preenchido dinamicamente via JavaScript usando atributos `data-*` do HTML (Título, Carga Horária, Lista de Módulos).
-    * Possui tratamento para listas longas (scroll interno) no mobile.
-
-3.  **Widget Flutuante de WhatsApp:**
-    * Botão fixo no canto da tela.
-    * Ao clicar, expande um menu com opções diretas para a unidade de **Arroio dos Ratos** ou **Charqueadas**.
-
-4.  **Formulário de Bolsas:**
-    * Envio direto via Formspree.
-    * Validação básica de HTML5.
-
-## 📂 Estrutura de Pastas
+## 📁 Estrutura de Diretórios
 
 ```text
 /
-├── index.html      # Estrutura principal
-├── css/
-│   └── style.css   # Estilos globais e responsividade
-├── js/
-│   └── script.js   # Lógica (Menu, Modal, Slider)
-├── img/            # Imagens (Banners, Logos, Cursos em .jpg)
-└── README.md       # Documentação
-
-⚙️ Configuração e Personalização
-
-Para clonar e rodar este projeto localmente:
-
-1. git clone [https://github.com/SEU-USUARIO/NOME-DO-REPO.git](https://github.com/SEU-USUARIO/NOME-DO-REPO.git)
-
-2. Abra o index.html no seu navegador.
+├── index.html              # Página principal e vitrine de cursos
+├── gestao-objetiva.php     # Painel Administrativo (Protegido)
+├── api-cursos.php          # Endpoint JSON que alimenta o frontend
+├── enviar-email.php        # Controlador de disparo de e-mails (Formulário)
+├── css/                    # Arquivos de estilo
+├── js/                     # Scripts de frontend (Consumo da API e Modais)
+├── img/                    # Diretório de armazenamento de imagens e uploads
+└── PHPMailer/              # Biblioteca de envio de e-mails

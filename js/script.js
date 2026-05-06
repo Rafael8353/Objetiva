@@ -4,18 +4,48 @@
  * =========================================
  */
 document.addEventListener('DOMContentLoaded', function() {
+    // --- LÓGICA DE ALERTA DO FORMULÁRIO (COM CORREÇÃO DO PULO) ---
+    const urlParams = new URLSearchParams(window.location.search);
+    const statusForm = urlParams.get('status');
+
+    if (statusForm === 'sucesso') {
+        const msgSucesso = document.getElementById('msg-sucesso');
+        if (msgSucesso) {
+            msgSucesso.style.display = 'block'; // Mostra o card verde
+            
+            // Limpa a URL para não ficar aparecendo "?status=sucesso" o tempo todo
+            const novaUrl = window.location.pathname + window.location.hash;
+            window.history.replaceState({}, document.title, novaUrl);
+
+            // CORREÇÃO: Espera os cards carregarem e desliza suavemente até o aviso verde
+            setTimeout(() => {
+                msgSucesso.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            }, 500);
+        }
+    } else if (statusForm === 'erro') {
+        const msgErro = document.getElementById('msg-erro');
+        if (msgErro) {
+            msgErro.style.display = 'block';
+            msgErro.innerText = 'Ocorreu um erro ao enviar. Tente novamente ou chame no WhatsApp.';
+            
+            const novaUrl = window.location.pathname + window.location.hash;
+            window.history.replaceState({}, document.title, novaUrl);
+
+            // CORREÇÃO: Desliza suavemente até o aviso vermelho
+            setTimeout(() => {
+                msgErro.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            }, 500);
+        }
+    }
     
-    // --- MENU MOBILE ---
     const btnMobile = document.getElementById('mobile-btn');
     const menuLista = document.getElementById('menu-lista');
 
     if (btnMobile && menuLista) {
-        // Alternar menu ao clicar no botão
         btnMobile.addEventListener('click', function() {
             menuLista.classList.toggle('active');
         });
 
-        // Fechar menu ao clicar em qualquer link
         const links = menuLista.querySelectorAll('a');
         links.forEach(link => {
             link.addEventListener('click', () => {
@@ -24,38 +54,80 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // --- CARROSSEL COM SPLIDE.JS ---
     if (typeof Splide !== 'undefined') {
-        const elms = document.getElementsByClassName('splide');
+        
+        function criarCard(curso) {
+            let atributos = `data-modal-type="${curso.tipo}" `;
+            
+            let descricao = curso.descricao || '';
+            let conteudo = curso.conteudo || '';
+            let carga = curso.carga_horaria || '';
+            
+            if(curso.tipo === 'padrao') {
+                atributos += `data-carga="${carga}" data-modulos="${conteudo}" data-descricao="${descricao}"`;
+            } else {
+                atributos += `data-lista="${conteudo}" data-descricao="${descricao}"`;
+            }
 
-        // Inicializa todos os carrosséis encontrados na página
-        for (let i = 0; i < elms.length; i++) {
-            new Splide(elms[i], {
-                type: 'loop',       // Loop infinito
-                perPage: 3,         // 3 cards no Desktop
-                perMove: 1,
-                gap: '30px',
-                pagination: false,
-                arrows: true,
-                
-                // Responsividade
-                breakpoints: {
-                    1024: {
-                        perPage: 2, // 2 cards em Tablets
-                    },
-                    768: {
-                        perPage: 1, // 1 card em Celulares
-                        gap: '15px',
-                        padding: '0' // Sem padding lateral no mobile para focar no card inteiro
+            return `
+                <li class="splide__slide">
+                    <div class="card-curso" ${atributos}>
+                        <div class="card-img-top btn-abrir-modal" style="cursor: pointer;">
+                            <img src="${curso.imagem}" alt="${curso.titulo}">
+                        </div>
+                        <div class="card-body">
+                            <h3>${curso.titulo}</h3>
+                            <p>${descricao}</p>
+                            <a href="#" class="btn-link btn-abrir-modal">Tenho Interesse →</a>
+                        </div>
+                    </div>
+                </li>
+            `;
+        }
+
+        fetch('api-cursos.php')
+            .then(response => response.json())
+            .then(cursos => {
+                const listaPadrao = document.getElementById('lista-padrao');
+                const listaUniritter = document.getElementById('lista-uniritter');
+
+                if(cursos.erro) {
+                    console.error('Erro no Banco de Dados:', cursos.erro);
+                    return;
+                }
+
+                cursos.forEach(curso => {
+                    if (curso.tipo === 'padrao' && listaPadrao) {
+                        listaPadrao.innerHTML += criarCard(curso);
+                    } else if (curso.tipo === 'uniritter' && listaUniritter) {
+                        listaUniritter.innerHTML += criarCard(curso);
+                    }
+                });
+
+                const elms = document.getElementsByClassName('splide');
+                for (let i = 0; i < elms.length; i++) {
+                    if (elms[i].querySelector('.splide__slide')) {
+                        new Splide(elms[i], {
+                            type: 'loop',
+                            perPage: 3,
+                            perMove: 1,
+                            gap: '30px',
+                            pagination: false,
+                            arrows: true,
+                            breakpoints: {
+                                1024: { perPage: 2 },
+                                768: { perPage: 1, gap: '15px', padding: '0' }
+                            }
+                        }).mount();
                     }
                 }
-            }).mount();
-        }
+            })
+            .catch(error => console.error('Erro ao conectar com a API:', error));
+            
     } else {
         console.warn("A biblioteca Splide.js não foi encontrada.");
     }
 
-    // --- INICIALIZAÇÕES ---
     initModal();
 });
 
@@ -69,126 +141,99 @@ function initModal() {
     const modalContainer = document.querySelector('.modal-container'); 
     const closeBtn = document.querySelector('.close-modal');
     
-    // Elementos Internos do Modal
     const modalTitle = document.getElementById('modal-titulo');
     const modalDesc = document.getElementById('modal-descricao');
     const modalWhatsapp = document.getElementById('modal-whatsapp-btn');
     
-    // Seções Dinâmicas (Listas e Carga Horária)
     const modalListaContainer = document.getElementById('modal-lista-container');
     const modalListaTitulo = document.getElementById('modal-lista-titulo');
     const modalListaUl = document.getElementById('modal-lista-ul');
     const modalCargaContainer = document.getElementById('modal-carga-container');
     const modalCargaValor = document.getElementById('modal-carga-valor');
     
-    // Usamos 'Event Delegation' para capturar cliques (inclusive em clones do Splide)
     document.addEventListener('click', (e) => {
-        // Verifica se clicou num botão OU na imagem (que agora tem a classe btn-abrir-modal)
         const btn = e.target.closest('.btn-abrir-modal');
-        
         if (!btn) return; 
 
         e.preventDefault();
 
-        // Encontra o card pai para extrair os dados
         const card = btn.closest('.card-curso');
-        
-        // Extrai dados básicos
         const titulo = card.querySelector('h3').innerText;
-        // Tenta pegar descrição do atributo data (se existir) ou do parágrafo
         const descricao = card.getAttribute('data-descricao') || card.querySelector('p').innerText;
-        const tipo = card.getAttribute('data-modal-type'); // 'padrao' ou 'uniritter'
+        const tipo = card.getAttribute('data-modal-type'); 
 
-        // Preenche Básico
         modalTitle.innerText = titulo;
         modalDesc.innerText = descricao;
+        modalDesc.classList.remove('descricao-reduzida');
 
-        // --- NOVO: LÓGICA PARA DIMINUIR TEXTO (EJA E PERSONALIZADAS) ---
-        // Verifica se o título contém "EJA" ou "Personalizadas"
-        if (titulo.includes('EJA') || titulo.includes('Personalizadas')) {
-            modalDesc.classList.add('descricao-reduzida');
-        } else {
-            modalDesc.classList.remove('descricao-reduzida');
-        }
-
-        // RESET: Limpa estados anteriores
         modalContainer.classList.remove('uniritter-theme');
         if (modalListaContainer) modalListaContainer.style.display = 'none';
         if (modalCargaContainer) modalCargaContainer.style.display = 'none';
         if (modalListaUl) modalListaUl.innerHTML = '';
-        
-        // Garante que o título da lista esteja visível por padrão (para desfazer o do IFSUL)
         if (modalListaTitulo) modalListaTitulo.style.display = 'block';
 
-        // --- LÓGICA CONDICIONAL ---
-        
         if (tipo === 'uniritter') {
-            // TEMA UNIRITTER (Vermelho + Lista de Cursos)
             modalContainer.classList.add('uniritter-theme');
-            
             const listaCursos = card.getAttribute('data-lista');
             if (listaCursos) {
                 modalListaContainer.style.display = 'block';
                 modalListaTitulo.innerText = "Cursos disponíveis:";
-                
                 listaCursos.split(',').forEach(item => {
-                    const li = document.createElement('li');
-                    li.textContent = item.trim();
-                    modalListaUl.appendChild(li);
+                    if(item.trim() !== '') {
+                        const li = document.createElement('li');
+                        li.textContent = item.trim();
+                        modalListaUl.appendChild(li);
+                    }
                 });
             }
 
         } else {
-            // TEMA PADRÃO (Verde + Módulos + Carga Horária)
-            
-            // 1. Carga Horária
             const carga = card.getAttribute('data-carga');
             if (carga) {
                 modalCargaContainer.style.display = 'block';
                 modalCargaValor.innerText = carga;
             }
 
-            // 2. Módulos
             const modulos = card.getAttribute('data-modulos');
             if (modulos) {
-                modalListaContainer.style.display = 'block';
-                
-                // --- NOVO: LÓGICA ESPECÍFICA DO IFSUL ---
-                if (titulo.includes('IFSUL')) {
-                    // Se for IFSUL, esconde o título "Módulos do Curso"
-                    modalListaTitulo.style.display = 'none';
+                // CORREÇÃO DA VÍRGULA: Se for EJA ou Personalizadas, trata como texto longo
+                if (titulo.includes('EJA') || titulo.includes('Personalizadas')) {
+                    modalListaContainer.style.display = 'none';
+                    modalDesc.innerText = modulos; // O texto longo assume o lugar da descrição
                 } else {
-                    // Para os outros, mostra normal
-                    modalListaTitulo.style.display = 'block';
-                    modalListaTitulo.innerText = "Módulos do Curso:";
+                    // Cursos normais com tópicos
+                    modalListaContainer.style.display = 'block';
+                    if (titulo.includes('IFSUL')) {
+                        modalListaTitulo.style.display = 'none';
+                    } else {
+                        modalListaTitulo.style.display = 'block';
+                        modalListaTitulo.innerText = "Módulos do Curso:";
+                    }
+                    
+                    modulos.split(',').forEach(item => {
+                        if(item.trim() !== '') {
+                            const li = document.createElement('li');
+                            li.textContent = item.trim();
+                            modalListaUl.appendChild(li);
+                        }
+                    });
                 }
-                
-                modulos.split(',').forEach(item => {
-                    const li = document.createElement('li');
-                    li.textContent = item.trim();
-                    modalListaUl.appendChild(li);
-                });
             }
         }
 
-        // Link do WhatsApp
         const mensagem = encodeURIComponent(`Olá! Vi no site e tenho interesse em: ${titulo}. Poderia dar-me mais informações?`);
         const telefoneDestino = "5551999869527"; 
         
         modalWhatsapp.href = `https://wa.me/${telefoneDestino}?text=${mensagem}`;
-
-        // Exibe o modal
         modal.classList.add('active');
     });
 
-    // Fechar Modal
     const fecharModal = () => {
         modal.classList.remove('active');
     };
 
     if (closeBtn) closeBtn.addEventListener('click', fecharModal);
 
-    // Fecha ao clicar no fundo escuro
     window.addEventListener('click', (e) => {
         if (e.target === modal) {
             fecharModal();
@@ -196,11 +241,6 @@ function initModal() {
     });
 }
 
-/**
- * =========================================
- * 3. WIDGET FLUTUANTE DO WHATSAPP
- * =========================================
- */
 function toggleWhatsApp() {
     const menu = document.getElementById('wa-menu');
     const mainIcon = document.getElementById('wa-main-icon');
@@ -211,7 +251,6 @@ function toggleWhatsApp() {
     menu.classList.toggle('open');
     const isOpen = menu.classList.contains('open');
 
-    // Alterna ícones
     if (isOpen) {
         mainIcon.style.display = 'none';
         closeIcon.style.display = 'block';
