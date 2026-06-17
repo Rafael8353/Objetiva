@@ -4,8 +4,8 @@ session_start();
 // ==========================================
 // 1. CONFIGURAÇÕES DE LOGIN
 // ==========================================
-$usuario_painel = 'Camila';
-$senha_painel = '10203040'; 
+$usuario_painel = '';
+$senha_painel = ''; 
 
 // ==========================================
 // 2. BANCO DE DADOS (LOCAWEB)

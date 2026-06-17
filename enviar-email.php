@@ -48,10 +48,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         // 2. REMETENTE E DESTINATÁRIO
         // ==========================================
         // Quem está enviando (O carteiro)
-        $mail->setFrom('site@objetivagrupodeensino.com.br', 'Site Objetiva'); 
+        $mail->setFrom('', 'Site Objetiva'); 
         
         // Para quem vai a mensagem
-        $mail->addAddress('camilagvalle@gmail.com', 'Camila Valle');     
+        $mail->addAddress('', '');     
         
         // Se ela clicar em "Responder", vai pro email do aluno
         $mail->addReplyTo($email_aluno, $nome);
