@@ -4,16 +4,16 @@ session_start();
 // ==========================================
 // 1. CONFIGURAÇÕES DE LOGIN
 // ==========================================
-$usuario_painel = 'ADMIN';
-$senha_painel = 'SENHA ADMIN'; 
+$usuario_painel = 'Camila';
+$senha_painel = '10203040'; 
 
 // ==========================================
 // 2. BANCO DE DADOS (LOCAWEB)
 // ==========================================
-$db_host = 'SEU HOST'; 
-$db_name = 'SEU NOME DO BANCO';
-$db_user = 'SEU USER DO BANCO';
-$db_pass = 'SUA SENHA DO BANCO';
+$db_host = ''; 
+$db_name = '';
+$db_user = '';
+$db_pass = '';
 
 if (isset($_GET['sair'])) { session_destroy(); header("Location: gestao-objetiva.php"); exit; }
 

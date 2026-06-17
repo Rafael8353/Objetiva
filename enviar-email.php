@@ -11,6 +11,18 @@ require 'PHPMailer/SMTP.php';
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     
+// 1. CAPTURA A ARMADILHA (HONEYPOT)
+    $honeypot = $_POST['url_site'];
+
+    // 2. VERIFICA SE É UM ROBÔ
+    if (!empty($honeypot)) {
+        // Se o campo invisível foi preenchido, é um robô.
+        // Redireciona como 'sucesso' para que o robô ache que funcionou e vá embora, mas NÃO envia o e-mail.
+        header("Location: index.html?status=sucesso#orcamento");
+        exit;
+    }
+
+
     // Captura os dados do formulário
     $nome = htmlspecialchars($_POST['nome']);
     $email_aluno = htmlspecialchars($_POST['email']);
@@ -26,8 +38,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $mail->isSMTP();                                            
         $mail->Host       = 'email-ssl.com.br'; //  smtp.objetivagrupodeensino.com.br
         $mail->SMTPAuth   = true;                                   
-        $mail->Username   = 'SEU EMAIL'; // Seu novo email criado
-        $mail->Password   = 'SUA SENHA';               // A senha desse email
+        $mail->Username   = ''; // Seu novo email criado
+        $mail->Password   = '';               // A senha desse email
         $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;         // SSL
         $mail->Port       = 465;                                 // Porta SSL padrão
         $mail->CharSet    = 'UTF-8';
@@ -36,10 +48,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         // 2. REMETENTE E DESTINATÁRIO
         // ==========================================
         // Quem está enviando (O carteiro)
-        $mail->setFrom('SEU EMAIL', 'Site Objetiva'); 
+        $mail->setFrom('site@objetivagrupodeensino.com.br', 'Site Objetiva'); 
         
         // Para quem vai a mensagem
-        $mail->addAddress('EMAIL DA DONA DA LOJA', 'DONA DA LOJA');     
+        $mail->addAddress('camilagvalle@gmail.com', 'Camila Valle');     
         
         // Se ela clicar em "Responder", vai pro email do aluno
         $mail->addReplyTo($email_aluno, $nome);
